@@ -1,0 +1,18 @@
+<div class="container">
+  <h1>Cravates</h1>
+  <div class="row">
+    <% @cravates.each do |cravate| %>
+      <div class="col-6 col-md-4">
+        <div class="card">
+          <%= image_tag cravate.photo_url , class: "card-img-top" %>
+          <div class="card-body">
+            <h5 class="card-title"><%= cravate.name %></h5>
+            <p class="card-text"><%= cravate.category.name %></p>
+            <%= link_to "More details", cravate_path(cravate), class: "btn btn-primary" %>
+            <p>Amount: <%= humanized_money_with_symbol(cravate.price) %></p>
+          </div>
+        </div>
+      </div>
+    <% end %>
+  </div>
+</div>

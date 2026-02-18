@@ -1,0 +1,94 @@
+<% content_for :page_class, "berthier-engagement" %>
+
+<!-- Breadcrumb -->
+<nav class="breadcrumb">
+  <div class="container">
+    <%= link_to "← Retour à l'accueil", root_path, class: "breadcrumb__link" %>
+  </div>
+</nav>
+
+<!-- Header de la page -->
+<header class="engagement__header engagement__header--fem">
+  <div class="container">
+    <span class="engagement__dossier">[DOSSIER FEM-1994]</span>
+    <h1 class="engagement__title">FÉMINISTE</h1>
+    <p class="engagement__subtitle">« La cravate, c'est un symbole. Autant qu'il serve à quelque chose. »</p>
+  </div>
+</header>
+
+<!-- Contenu principal -->
+<section class="engagement__content">
+  <div class="container">
+    <div class="engagement__grid">
+      <!-- Colonne texte -->
+      <div class="engagement__text">
+        <p class="engagement__intro">
+          Pendant 22 ans, j'ai travaillé dans des bureaux où les hommes portaient des cravates et prenaient les décisions. Les femmes portaient ce qu'elles voulaient et prenaient des notes.
+        </p>
+
+        <p>
+          Je ne dis pas que la cravate est le problème. Je dis que ceux qui la portent pourraient faire mieux.
+        </p>
+
+        <p>
+          Alors voilà : 10% de chaque cravate vendue va à des associations qui travaillent pour l'égalité professionnelle. Pas pour se donner bonne conscience. Parce que c'est la moindre des choses.
+        </p>
+
+        <p class="engagement__conclusion">
+          Porter une cravate Berthier, c'est porter un petit rappel autour du cou : le monde du travail n'est pas encore juste, et on peut faire quelque chose.
+        </p>
+
+        <p class="engagement__signature">
+          — Berthier
+        </p>
+      </div>
+
+      <!-- Colonne image -->
+      <div class="engagement__image">
+        <%= image_tag "bloc_solidaire/rouge_a_levre.png", alt: "Berthier" %>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Encart concret -->
+<section class="engagement__facts">
+  <div class="container">
+    <h2 class="facts__title">Les faits, rien que les faits</h2>
+    <div class="facts__grid">
+      <div class="fact__item">
+        <span class="fact__icon">✊</span>
+        <span class="fact__text">10% du prix reversé à chaque vente</span>
+      </div>
+      <div class="fact__item">
+        <span class="fact__icon">🤝</span>
+        <span class="fact__text">Partenariats avec des associations d'insertion professionnelle féminine</span>
+      </div>
+      <div class="fact__item">
+        <span class="fact__icon">📊</span>
+        <span class="fact__text">Transparence totale : bilan annuel publié sur le site</span>
+      </div>
+      <div class="fact__item">
+        <span class="fact__icon">💜</span>
+        <span class="fact__text">Partenaires : associations locales (en cours de définition)</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Citation de fin -->
+<section class="engagement__quote">
+  <div class="container">
+    <blockquote>
+      <p>"J'ai mis 22 ans à comprendre que le problème n'était pas ma cravate. C'était ce qu'elle représentait."</p>
+      <cite>— Berthier, Entretien annuel, 2014</cite>
+    </blockquote>
+  </div>
+</section>
+
+<!-- CTA -->
+<section class="engagement__cta">
+  <div class="container">
+    <%= link_to "Voir les cravates", cravates_path, class: "btn btn--large" %>
+  </div>
+</section>

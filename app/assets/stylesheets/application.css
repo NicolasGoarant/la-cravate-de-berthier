@@ -107,3 +107,479 @@ img {
   outline: 3px solid var(--bleu-calque);
   outline-offset: 2px;
 }
+
+
+
+/* ===========================================
+   VALUE CARDS - Section Engagements
+   Avec images illustratives
+   =========================================== */
+
+.values-hero {
+  padding: 4rem 0;
+  background: #faf9f6;
+}
+
+.values-hero__intro {
+  text-align: center;
+  margin-bottom: 3rem;
+}
+
+.values-hero__title {
+  font-family: 'Courier New', Courier, monospace;
+  font-size: 2rem;
+  font-weight: 700;
+  line-height: 1.2;
+  margin-bottom: 1rem;
+}
+
+.values-hero__subtitle {
+  font-family: 'Courier New', Courier, monospace;
+  font-size: 1rem;
+  color: #666;
+}
+
+/* Grid des 3 cards */
+.values-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 2rem;
+  margin-bottom: 3rem;
+}
+
+/* Card individuelle */
+.value-card {
+  background: #fff;
+  border: 1px solid #e5e4e0;
+  border-radius: 4px;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+}
+
+/* Image de la card */
+.value-card__image {
+  width: 100%;
+  height: 200px;
+  overflow: hidden;
+  position: relative;
+}
+
+.value-card__image img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+/* Centrage spécifique pour chaque image */
+.value-card--1 .value-card__image img {
+  object-position: 70% center !important;
+}
+
+.value-card--2 .value-card__image img {
+  object-position: center 15% !important;
+}
+
+.value-card--3 .value-card__image img {
+  object-position: center center !important;
+}
+
+/* Contenu texte - bloc noir */
+.value-card__content {
+  background: #2c2c2c;
+  color: #fff;
+  padding: 1.5rem;
+  flex-grow: 1;
+  display: flex;
+  flex-direction: column;
+}
+
+.value-card__header {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  margin-bottom: 0.75rem;
+}
+
+.value-card__ref {
+  font-family: 'Courier New', Courier, monospace;
+  font-size: 0.65rem;
+  color: #999;
+  letter-spacing: 0.05em;
+}
+
+.value-card__icon {
+  display: none; /* On cache les icônes SVG maintenant qu'on a des images */
+}
+
+.value-card__title {
+  font-family: 'Courier New', Courier, monospace;
+  font-size: 1.1rem;
+  font-weight: 700;
+  margin-bottom: 0.75rem;
+  color: #fff;
+}
+
+.value-card__description {
+  font-family: 'Courier New', Courier, monospace;
+  font-size: 0.8rem;
+  line-height: 1.5;
+  color: #ccc;
+  margin-bottom: 1rem;
+  flex-grow: 1;
+}
+
+.value-card__cta {
+  margin-top: auto;
+}
+
+.value-card__link {
+  font-family: 'Courier New', Courier, monospace;
+  font-size: 0.75rem;
+  color: #fff;
+  text-decoration: none;
+  opacity: 0.8;
+  transition: opacity 0.2s ease;
+}
+
+.value-card__link:hover {
+  opacity: 1;
+  text-decoration: underline;
+}
+
+/* Bannière de stats */
+.values-banner {
+  display: flex;
+  justify-content: center;
+  gap: 4rem;
+  padding: 2rem;
+  background: #2c2c2c;
+  border-radius: 4px;
+}
+
+.values-banner__stat {
+  text-align: center;
+}
+
+.values-banner__number {
+  display: block;
+  font-family: 'Courier New', Courier, monospace;
+  font-size: 2rem;
+  font-weight: 700;
+  color: #fff;
+}
+
+.values-banner__label {
+  font-family: 'Courier New', Courier, monospace;
+  font-size: 0.7rem;
+  color: #999;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+
+
+/* ===========================================
+   RESPONSIVE
+   =========================================== */
+
+@media (max-width: 992px) {
+  .values-grid {
+    grid-template-columns: 1fr;
+    gap: 1.5rem;
+  }
+
+  .value-card {
+    flex-direction: row;
+  }
+
+  .value-card__image {
+    width: 40%;
+    height: auto;
+    min-height: 200px;
+  }
+
+  .value-card__content {
+    width: 60%;
+  }
+
+  .values-banner {
+    flex-direction: column;
+    gap: 1.5rem;
+  }
+}
+
+@media (max-width: 576px) {
+  .value-card {
+    flex-direction: column;
+  }
+
+  .value-card__image {
+    width: 100%;
+    height: 180px;
+  }
+
+  .value-card__content {
+    width: 100%;
+  }
+
+  .values-hero__title {
+    font-size: 1.5rem;
+  }
+}
+
+
+
+
+/* ===========================================
+   PAGES ENGAGEMENTS
+   Écologique, Féministe, Solidaire
+   =========================================== */
+
+.berthier-engagement {
+  background: #faf9f6;
+}
+
+/* ===========================================
+   HEADER
+   =========================================== */
+
+.engagement__header {
+  padding: 4rem 0 3rem;
+  text-align: center;
+  color: #fff;
+}
+
+.engagement__header--eco {
+  background: linear-gradient(135deg, #4a6741 0%, #3d5a35 100%);
+}
+
+.engagement__header--fem {
+  background: linear-gradient(135deg, #8b4049 0%, #6d2f36 100%);
+}
+
+.engagement__header--sol {
+  background: linear-gradient(135deg, #3e5f8a 0%, #2d4a6d 100%);
+}
+
+.engagement__dossier {
+  display: inline-block;
+  font-family: 'Courier New', Courier, monospace;
+  font-size: 0.75rem;
+  letter-spacing: 0.1em;
+  opacity: 0.8;
+  margin-bottom: 1rem;
+}
+
+.engagement__title {
+  font-family: 'Courier New', Courier, monospace;
+  font-size: 3rem;
+  font-weight: 700;
+  letter-spacing: 0.15em;
+  margin: 0 0 1rem 0;
+}
+
+.engagement__subtitle {
+  font-family: 'Courier New', Courier, monospace;
+  font-size: 1.1rem;
+  font-style: italic;
+  opacity: 0.9;
+  max-width: 600px;
+  margin: 0 auto;
+}
+
+/* ===========================================
+   CONTENU PRINCIPAL
+   =========================================== */
+
+.engagement__content {
+  padding: 4rem 0;
+}
+
+.engagement__grid {
+  display: grid;
+  grid-template-columns: 1.2fr 0.8fr;
+  gap: 4rem;
+  align-items: start;
+}
+
+.engagement__text {
+  font-family: 'Courier New', Courier, monospace;
+}
+
+.engagement__intro {
+  font-size: 1.2rem;
+  line-height: 1.8;
+  color: #2c2c2c;
+  margin-bottom: 1.5rem;
+}
+
+.engagement__text p {
+  font-size: 1.05rem;
+  line-height: 1.8;
+  color: #444;
+  margin-bottom: 1.5rem;
+}
+
+.engagement__conclusion {
+  font-size: 1.15rem !important;
+  font-weight: 500;
+  color: #2c2c2c !important;
+  padding-left: 1.5rem;
+  border-left: 4px solid #2c2c2c;
+  margin: 2rem 0 !important;
+}
+
+.engagement__signature {
+  font-size: 1rem !important;
+  font-style: italic;
+  color: #666 !important;
+  text-align: right;
+  margin-top: 2rem !important;
+}
+
+.engagement__image {
+  position: sticky;
+  top: 2rem;
+}
+
+.engagement__image img {
+  width: 100%;
+  border-radius: 4px;
+  box-shadow: 0 8px 30px rgba(0, 0, 0, 0.12);
+}
+
+/* ===========================================
+   ENCART FAITS CONCRETS
+   =========================================== */
+
+.engagement__facts {
+  padding: 3rem 0;
+  background: #2c2c2c;
+}
+
+.facts__title {
+  font-family: 'Courier New', Courier, monospace;
+  font-size: 1rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  color: #fff;
+  text-align: center;
+  margin-bottom: 2rem;
+}
+
+.facts__grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 2rem;
+}
+
+.fact__item {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  gap: 0.75rem;
+}
+
+.fact__icon {
+  font-size: 2rem;
+}
+
+.fact__text {
+  font-family: 'Courier New', Courier, monospace;
+  font-size: 0.85rem;
+  line-height: 1.5;
+  color: #ccc;
+}
+
+/* ===========================================
+   CITATION DE FIN
+   =========================================== */
+
+.engagement__quote {
+  padding: 4rem 0;
+  background: #f5f4f0;
+}
+
+.engagement__quote blockquote {
+  max-width: 700px;
+  margin: 0 auto;
+  text-align: center;
+}
+
+.engagement__quote p {
+  font-family: 'Courier New', Courier, monospace;
+  font-size: 1.4rem;
+  font-style: italic;
+  line-height: 1.6;
+  color: #2c2c2c;
+  margin-bottom: 1rem;
+}
+
+.engagement__quote cite {
+  font-family: 'Courier New', Courier, monospace;
+  font-size: 0.85rem;
+  color: #666;
+  font-style: normal;
+}
+
+/* ===========================================
+   CTA
+   =========================================== */
+
+.engagement__cta {
+  padding: 3rem 0 4rem;
+  text-align: center;
+  background: #faf9f6;
+}
+
+/* ===========================================
+   RESPONSIVE
+   =========================================== */
+
+@media (max-width: 992px) {
+  .engagement__grid {
+    grid-template-columns: 1fr;
+    gap: 2rem;
+  }
+
+  .engagement__image {
+    position: static;
+    order: -1;
+    max-width: 400px;
+    margin: 0 auto;
+  }
+
+  .facts__grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .engagement__title {
+    font-size: 2.5rem;
+  }
+}
+
+@media (max-width: 576px) {
+  .engagement__title {
+    font-size: 2rem;
+    letter-spacing: 0.1em;
+  }
+
+  .engagement__subtitle {
+    font-size: 1rem;
+  }
+
+  .facts__grid {
+    grid-template-columns: 1fr;
+    gap: 1.5rem;
+  }
+
+  .engagement__quote p {
+    font-size: 1.2rem;
+  }
+
+  .engagement__intro {
+    font-size: 1.1rem;
+  }
+}

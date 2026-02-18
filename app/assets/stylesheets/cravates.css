@@ -551,3 +551,269 @@
   font-weight: 700;
   color: #2c2c2c;
 }
+
+
+/* ===========================================
+   PAGE SHOW - Styles narratif horizontal
+   =========================================== */
+
+/* En-tête dossier administratif */
+.product-detail__dossier-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1rem 1.5rem;
+  background: #2c2c2c;
+  color: #fff;
+  margin-bottom: 2rem;
+  font-family: 'Courier New', Courier, monospace;
+}
+
+.dossier__ref {
+  font-size: 1.1rem;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+}
+
+.dossier__service {
+  font-size: 0.7rem;
+  color: #999;
+  letter-spacing: 0.05em;
+}
+
+/* Image container avec tampon */
+.product-detail__main-image {
+  position: relative;
+}
+
+/* Tampon APPROUVÉ */
+.product-detail__stamp {
+  position: absolute;
+  top: 20px;
+  right: 20px;
+  background: transparent;
+  color: #4a7c59;
+  font-family: 'Courier New', Courier, monospace;
+  font-size: 1.4rem;
+  font-weight: 700;
+  padding: 0.5rem 1rem;
+  border: 4px solid #4a7c59;
+  transform: rotate(12deg);
+  opacity: 0.9;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+}
+
+/* Bouton large */
+.btn--large {
+  padding: 18px 28px;
+  font-size: 1rem;
+}
+
+/* ===========================================
+   SECTION NARRATIVE - 3 fiches horizontales
+   =========================================== */
+
+.product-narrative {
+  padding: 3rem 0;
+  background: #f0ebe3;
+}
+
+.narrative__grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1.5rem;
+}
+
+/* Carte narrative de base */
+.narrative__card {
+  background: #fff;
+  padding: 1.5rem;
+  border-radius: 2px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+  display: flex;
+  flex-direction: column;
+  position: relative;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.narrative__card:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.12);
+}
+
+.narrative__card-header {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  margin-bottom: 1rem;
+  padding-bottom: 0.75rem;
+  border-bottom: 2px solid #f0f0f0;
+}
+
+.narrative__icon {
+  font-size: 1.2rem;
+}
+
+.narrative__title {
+  font-family: 'Courier New', Courier, monospace;
+  font-size: 0.85rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  color: #2c2c2c;
+  margin: 0;
+}
+
+.narrative__content {
+  font-family: 'Courier New', Courier, monospace;
+  font-size: 0.9rem;
+  line-height: 1.6;
+  color: #444;
+  flex-grow: 1;
+}
+
+/* Fiche 1 : L'Histoire - fond blanc */
+.narrative__card--story {
+  background: #fff;
+  border-top: 4px solid #3e5f8a;
+}
+
+/* Fiche 2 : Quand la porter - fond jauni (post-it) */
+.narrative__card--when {
+  background: #fdf6e3;
+  border-top: 4px solid #d4a84b;
+}
+
+/* Fiche 3 : Le mot de Berthier - fond noir */
+.narrative__card--quote {
+  background: #2c2c2c;
+  color: #fff;
+  border-top: 4px solid #fff;
+}
+
+.narrative__card--quote .narrative__title {
+  color: #fff;
+}
+
+.narrative__card--quote .narrative__card-header {
+  border-bottom-color: #444;
+}
+
+.narrative__quote {
+  font-family: 'Courier New', Courier, monospace;
+  font-size: 1rem;
+  font-style: italic;
+  line-height: 1.6;
+  color: #fff;
+  margin: 0 0 1rem 0;
+  flex-grow: 1;
+}
+
+.narrative__signature {
+  font-family: 'Courier New', Courier, monospace;
+  font-size: 0.75rem;
+  color: #999;
+  font-style: normal;
+}
+
+/* ===========================================
+   SECTION SPECS TECHNIQUES
+   =========================================== */
+
+.product-specs-section {
+  padding: 2rem 0;
+  background: #faf9f6;
+}
+
+.product-specs__wrapper {
+  background: #fff;
+  border: 1px solid #e5e4e0;
+  padding: 1.5rem 2rem;
+}
+
+.product-specs__title {
+  font-family: 'Courier New', Courier, monospace;
+  font-size: 0.9rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  color: #2c2c2c;
+  margin: 0 0 1.5rem 0;
+  padding-bottom: 0.75rem;
+  border-bottom: 1px solid #e5e4e0;
+}
+
+.product-specs__grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 1.5rem;
+}
+
+.spec__item {
+  display: flex;
+  flex-direction: column;
+  gap: 0.25rem;
+}
+
+.spec__label {
+  font-family: 'Courier New', Courier, monospace;
+  font-size: 0.7rem;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  color: #999;
+}
+
+.spec__value {
+  font-family: 'Courier New', Courier, monospace;
+  font-size: 0.95rem;
+  color: #2c2c2c;
+  font-weight: 500;
+}
+
+/* ===========================================
+   RESPONSIVE
+   =========================================== */
+
+@media (max-width: 992px) {
+  .product-detail__dossier-header {
+    flex-direction: column;
+    gap: 0.5rem;
+    text-align: center;
+  }
+
+  .narrative__grid {
+    grid-template-columns: 1fr;
+    gap: 1rem;
+  }
+
+  .product-specs__grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .product-detail__stamp {
+    top: 10px;
+    right: 10px;
+    font-size: 1.1rem;
+  }
+}
+
+@media (max-width: 576px) {
+  .product-detail__stamp {
+    font-size: 0.9rem;
+    padding: 0.25rem 0.5rem;
+    border-width: 3px;
+  }
+
+  .dossier__ref {
+    font-size: 0.9rem;
+  }
+
+  .product-specs__grid {
+    grid-template-columns: 1fr;
+  }
+
+  .narrative__card {
+    padding: 1.25rem;
+  }
+}

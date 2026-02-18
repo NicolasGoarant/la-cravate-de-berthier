@@ -22,7 +22,6 @@
         <li><a href="#valeurs">Nos valeurs</a></li>
         <li><%= link_to "Catalogue", cravates_path %></li>
         <li><a href="#manifeste">Le manifeste</a></li>
-        <li><a href="#newsletter" class="btn btn--nav">S'inscrire</a></li>
       </ul>
       <button class="mobile-menu-toggle" aria-label="Menu">
         <span></span>
@@ -45,8 +44,8 @@
         </div>
       </div>
       <div class="hero__img-container">
-        <!-- Image principale de Berthier -->
-        <div class="hero__berthier-showcase">
+        <!-- Image principale de Berthier - cliquable -->
+        <div class="hero__berthier-showcase" id="berthierShowcase">
           <% @hero_cravates.each_with_index do |cravate, index| %>
             <%= image_tag cravate[:image],
                 alt: "Berthier porte #{cravate[:name]}",
@@ -54,24 +53,21 @@
                 data: { cravate_index: index } %>
           <% end %>
 
-          <!-- Indicateur "Cliquez pour changer" -->
-          <div class="hero__click-hint">
-            <span class="click-hint__icon">👔</span>
-            <span class="click-hint__text">Cliquez pour changer de cravate</span>
+          <!-- Message avec guillemets -->
+          <div class="hero__click-message" id="clickMessage">
+            <span>👔 « Un clic, une cravate, un crack »</span>
           </div>
         </div>
 
-        <!-- Sélecteur de cravates -->
+        <!-- Sélecteur de cravates - pastilles -->
         <div class="hero__cravate-selector">
-          <span class="selector__label">Essayez nos modèles :</span>
+          <span class="selector__label">17 cravates disponibles</span>
           <div class="selector__options">
             <% @hero_cravates.each_with_index do |cravate, index| %>
-              <button class="selector__btn <%= 'active' if index == 0 %>"
+              <button class="selector__dot <%= 'active' if index == 0 %>"
                       data-cravate-index="<%= index %>"
                       style="--swatch-color: <%= cravate[:swatch_color] %>"
                       title="<%= cravate[:name] %>">
-                <span class="selector__swatch"></span>
-                <span class="selector__name"><%= cravate[:name] %></span>
               </button>
             <% end %>
           </div>
@@ -80,53 +76,63 @@
     </div>
   </section>
 
-  <!-- Piliers / Valeurs - VERSION AMPLIFIÉE -->
+  <!-- Piliers / Valeurs - Avec images -->
   <section id="valeurs" class="values-hero">
     <div class="container">
       <div class="values-hero__intro">
         <h2 class="values-hero__title">TROIS ENGAGEMENTS.<br>PAS DE COMPROMIS.</h2>
         <p class="values-hero__subtitle">La cravate qui assume ses convictions, même si ça froisse quelques chemises.</p>
       </div>
-
       <div class="values-grid">
-        <% @pillars.each_with_index do |pillar, index| %>
-          <article class="value-card value-card--<%= index + 1 %>">
+        <!-- Card Écologique -->
+        <article class="value-card value-card--1">
+          <div class="value-card__image">
+            <%= image_tag "bloc_solidaire/ficus.png", alt: "Plante de bureau fanée" %>
+          </div>
+          <div class="value-card__content">
             <div class="value-card__header">
-              <span class="value-card__ref"><%= pillar[:ref] %></span>
-              <div class="value-card__icon">
-                <% case index %>
-                <% when 0 %>
-                  <!-- Icône écologie -->
-                  <svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                    <path d="M12 2v20M2 12h20M17 7l-5 5-5-5M7 17l5-5 5 5"/>
-                  </svg>
-                <% when 1 %>
-                  <!-- Icône féminisme -->
-                  <svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                    <circle cx="12" cy="8" r="4"/>
-                    <path d="M3 21v-2a4 4 0 0 1 4-4h10a4 4 0 0 1 4 4v2"/>
-                  </svg>
-                <% when 2 %>
-                  <!-- Icône solidarité -->
-                  <svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                    <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/>
-                    <circle cx="9" cy="7" r="4"/>
-                    <path d="M23 21v-2a4 4 0 0 0-3-3.87"/>
-                    <path d="M16 3.13a4 4 0 0 1 0 7.75"/>
-                  </svg>
-                <% end %>
-              </div>
+              <span class="value-card__ref">[DOSSIER ECO-2026]</span>
             </div>
-            <h3 class="value-card__title"><%= pillar[:title] %></h3>
-            <p class="value-card__description"><%= pillar[:description] %></p>
+            <h3 class="value-card__title">ÉCOLOGIQUE</h3>
+            <p class="value-card__description">100% Lin bio sourcé en France. Une matière qui respire, contrairement à votre carrière.</p>
             <div class="value-card__cta">
-              <%= link_to "En savoir plus →", cravates_path, class: "value-card__link" %>
+              <%= link_to "En savoir plus →", engagement_ecologique_path, class: "value-card__link" %>
             </div>
-          </article>
-        <% end %>
+          </div>
+        </article>
+        <!-- Card Féministe -->
+        <article class="value-card value-card--2">
+          <div class="value-card__image">
+            <%= image_tag "bloc_solidaire/rouge_a_levre.png", alt: "Berthier avec rouge à lèvres" %>
+          </div>
+          <div class="value-card__content">
+            <div class="value-card__header">
+              <span class="value-card__ref">[DOSSIER FEM-1994]</span>
+            </div>
+            <h3 class="value-card__title">FÉMINISTE</h3>
+            <p class="value-card__description">10% des bénéfices reversés. Parce que le patriarcat de bureau est un concept dépassé, même pour Berthier.</p>
+            <div class="value-card__cta">
+              <%= link_to "En savoir plus →", engagement_feministe_path, class: "value-card__link" %>
+            </div>
+          </div>
+        </article>
+        <!-- Card Solidaire -->
+        <article class="value-card value-card--3">
+          <div class="value-card__image">
+            <%= image_tag "bloc_solidaire/pot-de-depart.png", alt: "Pot de départ Thérèse" %>
+          </div>
+          <div class="value-card__content">
+            <div class="value-card__header">
+              <span class="value-card__ref">[DOSSIER ESS-FR]</span>
+            </div>
+            <h3 class="value-card__title">SOLIDAIRE</h3>
+            <p class="value-card__description">Confectionnée par des entreprises de l'ESS. On soutient l'humain, le vrai, celui des ateliers.</p>
+            <div class="value-card__cta">
+              <%= link_to "En savoir plus →", engagement_solidaire_path, class: "value-card__link" %>
+            </div>
+          </div>
+        </article>
       </div>
-
-      <!-- Bannière d'engagement -->
       <div class="values-banner">
         <div class="values-banner__stat">
           <span class="values-banner__number">10%</span>
@@ -148,7 +154,7 @@
   <section id="produit" class="products">
     <div class="container">
       <h2 class="section-title">LE CATALOGUE ADMINISTRATIF</h2>
-      <p class="section-subtitle">Trois cravates. Pas une de plus. On ne fait pas dans l'excès.</p>
+      <p class="section-subtitle">Dix-sept cravates. Pas une de plus. On ne fait pas dans l'excès.</p>
 
       <div class="products__grid">
         <% @cravates.each do |cravate| %>
@@ -243,47 +249,91 @@ document.querySelector('.mobile-menu-toggle')?.addEventListener('click', functio
   this.classList.toggle('active');
 });
 
-// Sélecteur de cravates
+// Sélecteur de cravates avec auto-défilement initial
 document.addEventListener('DOMContentLoaded', function() {
   const images = document.querySelectorAll('.hero__berthier-img');
-  const buttons = document.querySelectorAll('.selector__btn');
-  const showcase = document.querySelector('.hero__berthier-showcase');
+  const dots = document.querySelectorAll('.selector__dot');
+  const showcase = document.getElementById('berthierShowcase');
+  const clickMessage = document.getElementById('clickMessage');
   let currentIndex = 0;
+  let autoPlayInterval = null;
+  let autoPlayCount = 0;
+  let userHasInteracted = false;
 
-  // Fonction pour changer de cravate
   function switchCravate(index) {
-    // Retirer la classe active de toutes les images et boutons
     images.forEach(img => img.classList.remove('active'));
-    buttons.forEach(btn => btn.classList.remove('active'));
+    dots.forEach(dot => dot.classList.remove('active'));
 
-    // Ajouter la classe active à l'image et au bouton sélectionnés
     images[index].classList.add('active');
-    buttons[index].classList.add('active');
+    dots[index].classList.add('active');
 
     currentIndex = index;
   }
 
-  // Clic sur les boutons du sélecteur
-  buttons.forEach((btn, index) => {
-    btn.addEventListener('click', () => switchCravate(index));
+  function stopAutoPlay() {
+    if (autoPlayInterval) {
+      clearInterval(autoPlayInterval);
+      autoPlayInterval = null;
+    }
+  }
+
+  function hideMessage() {
+    if (clickMessage) {
+      clickMessage.classList.add('hidden');
+    }
+  }
+
+  function startAutoPlay() {
+    autoPlayInterval = setInterval(() => {
+      autoPlayCount++;
+      const nextIndex = (currentIndex + 1) % images.length;
+      switchCravate(nextIndex);
+
+      // Arrêter après 4 changements
+      if (autoPlayCount >= 4) {
+        stopAutoPlay();
+      }
+    }, 1000);
+  }
+
+  // Clic sur les pastilles
+  dots.forEach((dot, index) => {
+    dot.addEventListener('click', () => {
+      userHasInteracted = true;
+      stopAutoPlay();
+      hideMessage();
+      switchCravate(index);
+    });
   });
 
   // Clic sur l'image pour passer à la suivante
-  showcase?.addEventListener('click', function(e) {
-    // Ne pas déclencher si on clique sur le hint
-    if (e.target.closest('.hero__click-hint')) return;
-
+  showcase?.addEventListener('click', function() {
+    userHasInteracted = true;
+    stopAutoPlay();
+    hideMessage();
     const nextIndex = (currentIndex + 1) % images.length;
     switchCravate(nextIndex);
   });
 
-  // Cacher le hint après le premier clic
-  showcase?.addEventListener('click', function() {
-    const hint = document.querySelector('.hero__click-hint');
-    if (hint) {
-      hint.style.opacity = '0';
-      setTimeout(() => hint.style.display = 'none', 300);
+  // Arrêter l'auto-play si l'utilisateur survole l'image
+  showcase?.addEventListener('mouseenter', () => {
+    if (!userHasInteracted) {
+      stopAutoPlay();
     }
-  }, { once: true });
+  });
+
+  // Reprendre l'auto-play si l'utilisateur quitte l'image (si pas encore interagi)
+  showcase?.addEventListener('mouseleave', () => {
+    if (!userHasInteracted && autoPlayCount < 4) {
+      startAutoPlay();
+    }
+  });
+
+  // Démarrer l'auto-défilement après un court délai
+  setTimeout(() => {
+    if (!userHasInteracted) {
+      startAutoPlay();
+    }
+  }, 800);
 });
 </script>

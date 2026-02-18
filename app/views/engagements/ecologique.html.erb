@@ -1,0 +1,94 @@
+<% content_for :page_class, "berthier-engagement" %>
+
+<!-- Breadcrumb -->
+<nav class="breadcrumb">
+  <div class="container">
+    <%= link_to "← Retour à l'accueil", root_path, class: "breadcrumb__link" %>
+  </div>
+</nav>
+
+<!-- Header de la page -->
+<header class="engagement__header engagement__header--eco">
+  <div class="container">
+    <span class="engagement__dossier">[DOSSIER ECO-2026]</span>
+    <h1 class="engagement__title">ÉCOLOGIQUE</h1>
+    <p class="engagement__subtitle">« Le lin, c'est comme moi : ça froisse, mais ça tient. »</p>
+  </div>
+</header>
+
+<!-- Contenu principal -->
+<section class="engagement__content">
+  <div class="container">
+    <div class="engagement__grid">
+      <!-- Colonne texte -->
+      <div class="engagement__text">
+        <p class="engagement__intro">
+          En 22 ans de bureau, j'ai vu passer beaucoup de cravates. Des polyesters qui grattent, des soies qui s'effilochent, des mélanges synthétiques qui sentent la pétrochimie dès qu'on transpire en réunion.
+        </p>
+
+        <p>
+          Un jour, j'ai compris que ma cravate était le seul choix vestimentaire qu'on me laissait. Alors autant qu'elle dise quelque chose.
+        </p>
+
+        <p>
+          Le lin bio, c'est une matière qui respire. Qui vient de France — du Nord, précisément, là où il pleut assez pour que la fibre soit belle. Qui ne demande presque pas d'eau pour pousser. Qui se froisse, oui, mais qui vieillit bien.
+        </p>
+
+        <p class="engagement__conclusion">
+          Comme les gens qui ont arrêté de faire semblant.
+        </p>
+
+        <p class="engagement__signature">
+          — Berthier
+        </p>
+      </div>
+
+      <!-- Colonne image -->
+      <div class="engagement__image">
+        <%= image_tag "bloc_solidaire/ficus.png", alt: "Plante de bureau" %>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Encart concret -->
+<section class="engagement__facts">
+  <div class="container">
+    <h2 class="facts__title">Les faits, rien que les faits</h2>
+    <div class="facts__grid">
+      <div class="fact__item">
+        <span class="fact__icon">🌱</span>
+        <span class="fact__text">Lin cultivé en Normandie et dans les Hauts-de-France</span>
+      </div>
+      <div class="fact__item">
+        <span class="fact__icon">💧</span>
+        <span class="fact__text">80% moins d'eau que le coton conventionnel</span>
+      </div>
+      <div class="fact__item">
+        <span class="fact__icon">🇫🇷</span>
+        <span class="fact__text">Filature et tissage en France</span>
+      </div>
+      <div class="fact__item">
+        <span class="fact__icon">♻️</span>
+        <span class="fact__text">Matière 100% biodégradable</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Citation de fin -->
+<section class="engagement__quote">
+  <div class="container">
+    <blockquote>
+      <p>"On ne changera pas le monde avec une cravate. Mais on peut au moins éviter de l'abîmer davantage."</p>
+      <cite>— Berthier, Note de service n°247, 2019</cite>
+    </blockquote>
+  </div>
+</section>
+
+<!-- CTA -->
+<section class="engagement__cta">
+  <div class="container">
+    <%= link_to "Voir les cravates", cravates_path, class: "btn btn--large" %>
+  </div>
+</section>

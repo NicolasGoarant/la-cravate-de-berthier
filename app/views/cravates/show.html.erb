@@ -1,205 +1,196 @@
 <% content_for :page_class, "berthier-cravate-show" %>
 
-<!-- Header / Navigation -->
-<header class="main-header">
+<!-- Breadcrumb -->
+<nav class="breadcrumb">
   <div class="container">
-    <nav class="main-nav">
-      <div class="brand">
-        <%= link_to root_path, class: "brand__link" do %>
-          <span class="brand__name">LA CRAVATE DE BERTHIER</span>
-          <span class="brand__tagline">L'élégance administrative depuis 1994</span>
-        <% end %>
-      </div>
-      <ul class="main-nav__links">
-        <li><%= link_to "Nos valeurs", root_path(anchor: "valeurs") %></li>
-        <li><%= link_to "Catalogue", cravates_path %></li>
-        <li><%= link_to "Le manifeste", root_path(anchor: "manifeste") %></li>
-        <li><%= link_to "S'inscrire", root_path(anchor: "newsletter"), class: "btn btn--nav" %></li>
-      </ul>
-      <button class="mobile-menu-toggle" aria-label="Menu">
-        <span></span>
-        <span></span>
-        <span></span>
-      </button>
-    </nav>
+    <%= link_to "← Retour au catalogue", cravates_path, class: "breadcrumb__link" %>
   </div>
-</header>
+</nav>
 
-<main class="berthier-cravate-show">
-  <!-- Fil d'Ariane -->
-  <section class="breadcrumb">
-    <div class="container">
-      <%= link_to "← Retour au catalogue", cravates_path, class: "breadcrumb__link" %>
-    </div>
-  </section>
+<!-- Fiche Produit -->
+<section class="product-detail">
+  <div class="container">
+    <!-- En-tête style dossier administratif -->
+    <header class="product-detail__dossier-header">
+      <span class="dossier__ref">DOSSIER <%= @cravate.reference %></span>
+      <span class="dossier__service">SERVICE CRAVATES — CLASSEMENT CONFIDENTIEL</span>
+    </header>
 
-  <!-- Fiche produit -->
-  <section class="product-detail">
-    <div class="container">
-      <div class="product-detail__grid">
-        <!-- Galerie d'images -->
-        <div class="product-detail__gallery">
-          <div class="product-detail__main-image">
-            <% if @cravate.photos.attached? %>
-              <%= image_tag @cravate.photos.first, alt: @cravate.name, class: "main-image" %>
-            <% else %>
-              <div class="product-img-placeholder product-img-placeholder--large">
-                <span class="placeholder-icon">👔</span>
-                <span class="placeholder-ref"><%= @cravate.reference %></span>
-              </div>
-            <% end %>
-          </div>
-          <% if @cravate.photos.attached? && @cravate.photos.count > 1 %>
-            <div class="product-detail__thumbnails">
-              <% @cravate.photos.each_with_index do |photo, index| %>
-                <%= image_tag photo, alt: "#{@cravate.name} - vue #{index + 1}", class: "thumbnail", data: { index: index } %>
-              <% end %>
+    <div class="product-detail__grid">
+      <!-- Colonne gauche : Image -->
+      <div class="product-detail__gallery">
+        <div class="product-detail__main-image">
+          <% if @cravate.photos.attached? %>
+            <%= image_tag @cravate.photos.first, alt: @cravate.name %>
+          <% else %>
+            <div class="product-img-placeholder--large">
+              <span class="placeholder-icon">👔</span>
+              <span class="placeholder-ref"><%= @cravate.reference %></span>
+            </div>
+          <% end %>
+
+          <!-- Tampon APPROUVÉ si en stock -->
+          <% if @cravate.available? %>
+            <div class="product-detail__stamp">
+              APPROUVÉ
+            </div>
+          <% end %>
+        </div>
+      </div>
+
+      <!-- Colonne droite : Infos -->
+      <div class="product-detail__info">
+        <div class="product-detail__header">
+          <span class="product-detail__ref"><%= @cravate.reference %></span>
+          <h1 class="product-detail__name"><%= @cravate.name %></h1>
+          <p class="product-detail__color"><%= @cravate.color %></p>
+        </div>
+
+        <!-- Bloc prix -->
+        <div class="product-detail__price-block">
+          <span class="product-detail__price"><%= number_to_currency(@cravate.price, unit: "€", format: "%n%u") %></span>
+          <% if @cravate.available? %>
+            <span class="product-detail__stock product-detail__stock--available">En stock (<%= @cravate.stock %> disponibles)</span>
+          <% else %>
+            <span class="product-detail__stock product-detail__stock--out">Rupture de stock</span>
+          <% end %>
+        </div>
+
+        <!-- Description courte -->
+        <p class="product-detail__description"><%= @cravate.description %></p>
+
+        <!-- Actions -->
+        <div class="product-detail__actions">
+          <% if @cravate.available? %>
+            <button class="btn btn--full btn--large">
+              👔 Ajouter au dossier — <%= number_to_currency(@cravate.price, unit: "€", format: "%n%u") %>
+            </button>
+          <% else %>
+            <div class="product-detail__notify">
+              <p>Cette cravate est temporairement indisponible.</p>
+              <button class="btn btn--outline">Me prévenir du retour</button>
             </div>
           <% end %>
         </div>
 
-        <!-- Informations produit -->
-        <div class="product-detail__info">
-          <div class="product-detail__header">
-            <span class="product-detail__ref"><%= @cravate.reference %></span>
-            <h1 class="product-detail__name"><%= @cravate.name %></h1>
-            <p class="product-detail__color"><%= @cravate.color %></p>
+        <!-- Engagements -->
+        <div class="product-detail__engagement">
+          <div class="engagement__item">
+            <span class="engagement__icon">🌱</span>
+            <span>100% Lin bio français</span>
           </div>
-
-          <div class="product-detail__price-block">
-            <span class="product-detail__price"><%= number_to_currency(@cravate.price, unit: "€", format: "%n %u") %></span>
-            <% if @cravate.available? %>
-              <span class="product-detail__stock product-detail__stock--available">
-                ✓ En stock (<%= @cravate.stock %> disponibles)
-              </span>
-            <% else %>
-              <span class="product-detail__stock product-detail__stock--out">
-                ✗ Rupture de stock
-              </span>
-            <% end %>
+          <div class="engagement__item">
+            <span class="engagement__icon">✊</span>
+            <span>10% reversés à des associations féministes</span>
           </div>
-
-          <div class="product-detail__description">
-            <p><%= @cravate.description %></p>
-          </div>
-
-          <div class="product-detail__specs">
-            <h3 class="specs__title">Fiche technique</h3>
-            <ul class="specs__list">
-              <li><strong>Matière :</strong> <%= @cravate.material %></li>
-              <li><strong>Couleur :</strong> <%= @cravate.color %></li>
-              <li><strong>Fabrication :</strong> France (ateliers ESS)</li>
-              <li><strong>Entretien :</strong> Lavage à 30°C, repassage doux</li>
-            </ul>
-          </div>
-
-          <div class="product-detail__actions">
-            <% if @cravate.available? %>
-              <%= link_to "Commander cette cravate", "#", class: "btn btn--large btn--full" %>
-              <p class="product-detail__reassurance">
-                🚚 Livraison offerte en France · 🔄 Retours sous 14 jours
-              </p>
-            <% else %>
-              <div class="product-detail__notify">
-                <p>Cette cravate est temporairement indisponible.</p>
-                <%= link_to "Me prévenir du retour en stock", root_path(anchor: "newsletter"), class: "btn btn--outline btn--full" %>
-              </div>
-            <% end %>
-          </div>
-
-          <!-- Engagement Berthier -->
-          <div class="product-detail__engagement">
-            <div class="engagement__item">
-              <span class="engagement__icon">🌱</span>
-              <span class="engagement__text">Lin bio cultivé en France</span>
-            </div>
-            <div class="engagement__item">
-              <span class="engagement__icon">💜</span>
-              <span class="engagement__text">10% reversés à des causes féministes</span>
-            </div>
-            <div class="engagement__item">
-              <span class="engagement__icon">🤝</span>
-              <span class="engagement__text">Confectionnée en atelier solidaire</span>
-            </div>
+          <div class="engagement__item">
+            <span class="engagement__icon">🤝</span>
+            <span>Confection solidaire ESS</span>
           </div>
         </div>
       </div>
     </div>
-  </section>
+  </div>
+</section>
 
-  <!-- Citation Berthier -->
-  <section class="product-quote">
-    <div class="container">
-      <blockquote class="product-quote__text">
-        "Une cravate ne change pas le monde. Mais elle peut rappeler à celui qui la porte qu'il n'est pas obligé de faire semblant."
-      </blockquote>
-      <p class="product-quote__signature">— Berthier, Service Comptabilité, 1994-2016</p>
+<!-- Bloc Narratif - 3 fiches horizontales -->
+<section class="product-narrative">
+  <div class="container">
+    <div class="narrative__grid">
+      <!-- Fiche 1 : L'Histoire -->
+      <% if @cravate.story.present? %>
+        <article class="narrative__card narrative__card--story">
+          <div class="narrative__card-header">
+            <span class="narrative__icon">📎</span>
+            <h2 class="narrative__title">L'Histoire</h2>
+          </div>
+          <p class="narrative__content"><%= @cravate.story %></p>
+        </article>
+      <% end %>
+
+      <!-- Fiche 2 : Quand la porter -->
+      <% if @cravate.when_to_wear.present? %>
+        <article class="narrative__card narrative__card--when">
+          <div class="narrative__card-header">
+            <span class="narrative__icon">📌</span>
+            <h2 class="narrative__title">Quand la porter</h2>
+          </div>
+          <p class="narrative__content"><%= @cravate.when_to_wear %></p>
+        </article>
+      <% end %>
+
+      <!-- Fiche 3 : Le mot de Berthier -->
+      <% if @cravate.berthier_quote.present? %>
+        <article class="narrative__card narrative__card--quote">
+          <div class="narrative__card-header">
+            <span class="narrative__icon">💬</span>
+            <h2 class="narrative__title">Le mot de Berthier</h2>
+          </div>
+          <blockquote class="narrative__quote">
+            "<%= @cravate.berthier_quote %>"
+          </blockquote>
+          <cite class="narrative__signature">— Berthier, Service Comptabilité, 1994-2016</cite>
+        </article>
+      <% end %>
     </div>
-  </section>
+  </div>
+</section>
 
-  <!-- Autres cravates -->
-  <section class="other-products">
-    <div class="container">
-      <h2 class="section-title">Les autres modèles</h2>
-      <div class="other-products__grid">
-        <% Cravate.where.not(id: @cravate.id).limit(2).each do |other| %>
-          <%= link_to cravate_path(other), class: "other-product-card" do %>
-            <div class="other-product-card__img">
-              <% if other.photos.attached? %>
-                <%= image_tag other.photos.first, alt: other.name %>
-              <% else %>
-                <div class="other-product-img-placeholder">
-                  <span>👔</span>
-                </div>
-              <% end %>
-            </div>
-            <div class="other-product-card__info">
-              <h3><%= other.name %></h3>
-              <span class="other-product-card__price"><%= number_to_currency(other.price, unit: "€", format: "%n %u") %></span>
-            </div>
-          <% end %>
+<!-- Spécifications techniques -->
+<section class="product-specs-section">
+  <div class="container">
+    <div class="product-specs__wrapper">
+      <h3 class="product-specs__title">📋 Spécifications Techniques</h3>
+      <div class="product-specs__grid">
+        <div class="spec__item">
+          <span class="spec__label">Matière</span>
+          <span class="spec__value"><%= @cravate.material %></span>
+        </div>
+        <div class="spec__item">
+          <span class="spec__label">Largeur</span>
+          <span class="spec__value">7,5 cm</span>
+        </div>
+        <div class="spec__item">
+          <span class="spec__label">Longueur</span>
+          <span class="spec__value">145 cm</span>
+        </div>
+        <div class="spec__item">
+          <span class="spec__label">Confection</span>
+          <span class="spec__value">Ateliers ESS, France</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Citation de fin -->
+<section class="product-quote">
+  <div class="container">
+    <p class="product-quote__text">"Une cravate, c'est un contrat tacite avec le monde du travail. Autant qu'il soit écrit avec ironie."</p>
+    <p class="product-quote__signature">— Berthier, Manifeste fondateur, 1994</p>
+  </div>
+</section>
+
+<!-- Autres cravates -->
+<section class="other-products">
+  <div class="container">
+    <h2 class="section-title">AUTRES DOSSIERS</h2>
+    <div class="other-products__grid">
+      <% @other_cravates.each do |cravate| %>
+        <%= link_to cravate_path(cravate), class: "other-product-card" do %>
+          <div class="other-product-card__img">
+            <% if cravate.photos.attached? %>
+              <%= image_tag cravate.photos.first, alt: cravate.name %>
+            <% else %>
+              <div class="other-product-img-placeholder">👔</div>
+            <% end %>
+          </div>
+          <div class="other-product-card__info">
+            <h3><%= cravate.name %></h3>
+            <span class="other-product-card__price"><%= number_to_currency(cravate.price, unit: "€", format: "%n%u") %></span>
+          </div>
         <% end %>
-      </div>
+      <% end %>
     </div>
-  </section>
-
-  <!-- Footer -->
-  <footer class="footer">
-    <div class="container">
-      <div class="footer__content">
-        <div class="footer__brand">
-          <strong>LA CRAVATE DE BERTHIER</strong>
-          <p class="footer__tagline">L'élégance de la déconstruction</p>
-        </div>
-        <nav class="footer__nav">
-          <%= link_to "CGV", "#", class: "footer__link" %>
-          <%= link_to "Mentions légales", "#", class: "footer__link" %>
-          <%= link_to "Contact", "#", class: "footer__link" %>
-        </nav>
-        <p class="footer__legal">
-          © <%= Date.current.year %> LA CRAVATE DE BERTHIER | E.U.R.L. au capital de 100 chemises
-        </p>
-      </div>
-    </div>
-  </footer>
-</main>
-
-<script>
-// Menu mobile toggle
-document.querySelector('.mobile-menu-toggle')?.addEventListener('click', function() {
-  document.querySelector('.main-nav__links').classList.toggle('active');
-  this.classList.toggle('active');
-});
-
-// Galerie d'images - changement de l'image principale au clic sur les thumbnails
-document.querySelectorAll('.thumbnail').forEach(thumb => {
-  thumb.addEventListener('click', function() {
-    const mainImage = document.querySelector('.main-image');
-    if (mainImage) {
-      mainImage.src = this.src;
-    }
-    document.querySelectorAll('.thumbnail').forEach(t => t.classList.remove('active'));
-    this.classList.add('active');
-  });
-});
-</script>
+  </div>
+</section>

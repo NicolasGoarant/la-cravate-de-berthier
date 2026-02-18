@@ -7,22 +7,94 @@ class PagesController < ApplicationController
     @cravates = Cravate.all
 
     # Images de Berthier avec les différentes cravates (pour le sélecteur hero)
-# Images de Berthier avec les différentes cravates (pour le sélecteur hero)
     @hero_cravates = [
+      # Les 3 originales
       {
         name: "La Réunion de 17h30",
-        image: "Berthier_rose_bleue.png",
-        swatch_color: "#1e3a5f"  # Bleu pétrole
+        image: "roses_et_bleues.png",
+        swatch_color: "#1e3a5f"
       },
       {
         name: "Le Café Soluble",
-        image: "Berthier_rouge.png",
-        swatch_color: "#b33a3a"  # Rouge
+        image: "rouge.png",
+        swatch_color: "#b33a3a"
       },
       {
         name: "La Pause Déjeuner",
-        image: "Berthier_vert.png",
-        swatch_color: "#4a6741"  # Vert de gris
+        image: "vert.png",
+        swatch_color: "#4a6741"
+      },
+      # Cravates unies
+      {
+        name: "La Note de Frais",
+        image: "gris_fonce.png",
+        swatch_color: "#4a5568"
+      },
+      {
+        name: "Le Pot de Départ",
+        image: "bordeaux.png",
+        swatch_color: "#722f37"
+      },
+      {
+        name: "L'Open Space",
+        image: "beige_moquette.png",
+        swatch_color: "#c2b280"
+      },
+      {
+        name: "Le Lundi Matin",
+        image: "bleu_marine.png",
+        swatch_color: "#1a365d"
+      },
+      {
+        name: "La Promotion Refusée",
+        image: "vert_olive.png",
+        swatch_color: "#556b2f"
+      },
+      {
+        name: "Le Mail Non Lu",
+        image: "blanc_casse.png",
+        swatch_color: "#f5f5dc"
+      },
+      {
+        name: "L'Afterwork Obligatoire",
+        image: "orange_bureaucratique.png",
+        swatch_color: "#cc5500"
+      },
+      # Cravates à motifs
+      {
+        name: "Le Tableau Excel",
+        image: "grises_et_blanches.png",
+        swatch_color: "#9ca3af"
+      },
+      {
+        name: "La Réunion Sans Fin",
+        image: "gris_et_bleues.png",
+        swatch_color: "#3d5a80"
+      },
+      {
+        name: "Le PowerPoint Urgent",
+        image: "rouges_blanches.png",
+        swatch_color: "#dc2626"
+      },
+      {
+        name: "La Machine à Café",
+        image: "creme_pois.png",
+        swatch_color: "#78350f"
+      },
+      {
+        name: "Le Badge Oublié",
+        image: "jaunes_et_noires.png",
+        swatch_color: "#fbbf24"
+      },
+      {
+        name: "Le Séminaire Team Building",
+        image: "carres_jaunes_verts.png",
+        swatch_color: "#65a30d"
+      },
+      {
+        name: "L'Augmentation Reportée",
+        image: "chevrons_gris.png",
+        swatch_color: "#78716c"
       }
     ]
 
@@ -88,9 +160,6 @@ class PagesController < ApplicationController
     email = params[:email]
 
     if email.present? && valid_email?(email)
-      # TODO: Sauvegarder en base de données
-      # NewsletterSubscriber.create(email: email)
-
       flash[:notice] = "Bienvenue au service comptabilité. Votre badge d'accès vous sera envoyé sous 3 à 5 jours ouvrés."
       Rails.logger.info "[Newsletter] Nouvelle inscription: #{email}"
     else

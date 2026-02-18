@@ -1,0 +1,98 @@
+<% content_for :page_class, "berthier-engagement" %>
+
+<!-- Breadcrumb -->
+<nav class="breadcrumb">
+  <div class="container">
+    <%= link_to "← Retour à l'accueil", root_path, class: "breadcrumb__link" %>
+  </div>
+</nav>
+
+<!-- Header de la page -->
+<header class="engagement__header engagement__header--sol">
+  <div class="container">
+    <span class="engagement__dossier">[DOSSIER ESS-FR]</span>
+    <h1 class="engagement__title">SOLIDAIRE</h1>
+    <p class="engagement__subtitle">« Une cravate cousue par des gens qui existent. »</p>
+  </div>
+</header>
+
+<!-- Contenu principal -->
+<section class="engagement__content">
+  <div class="container">
+    <div class="engagement__grid">
+      <!-- Colonne texte -->
+      <div class="engagement__text">
+        <p class="engagement__intro">
+          Dans les grandes entreprises, on parle beaucoup de "capital humain". J'ai toujours trouvé l'expression étrange. Comme si les gens étaient des actifs à optimiser.
+        </p>
+
+        <p>
+          Les cravates Berthier sont confectionnées par des ateliers de l'Économie Sociale et Solidaire. Des structures qui embauchent des personnes éloignées de l'emploi, qui forment, qui accompagnent.
+        </p>
+
+        <p>
+          Ce sont des vrais ateliers, avec des vraies machines, des vraies mains, des vraies pauses café. Pas des sous-traitants anonymes à l'autre bout du monde.
+        </p>
+
+        <p>
+          Quand vous achetez une cravate, quelqu'un ici en France a coupé le tissu, assemblé les pièces, vérifié les finitions. Cette personne a un nom, un trajet pour venir au travail, une vie en dehors.
+        </p>
+
+        <p class="engagement__conclusion">
+          C'est ça, la solidarité : se rappeler que derrière chaque objet, il y a quelqu'un.
+        </p>
+
+        <p class="engagement__signature">
+          — Berthier
+        </p>
+      </div>
+
+      <!-- Colonne image -->
+      <div class="engagement__image">
+        <%= image_tag "bloc_solidaire/pot-de-depart.png", alt: "Pot de départ" %>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Encart concret -->
+<section class="engagement__facts">
+  <div class="container">
+    <h2 class="facts__title">Les faits, rien que les faits</h2>
+    <div class="facts__grid">
+      <div class="fact__item">
+        <span class="fact__icon">🏭</span>
+        <span class="fact__text">Confection 100% française, ateliers ESS</span>
+      </div>
+      <div class="fact__item">
+        <span class="fact__icon">👐</span>
+        <span class="fact__text">Structures d'insertion par l'activité économique</span>
+      </div>
+      <div class="fact__item">
+        <span class="fact__icon">📍</span>
+        <span class="fact__text">Ateliers situés en région Grand Est</span>
+      </div>
+      <div class="fact__item">
+        <span class="fact__icon">🎓</span>
+        <span class="fact__text">Formation et accompagnement des salariés en insertion</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Citation de fin -->
+<section class="engagement__quote">
+  <div class="container">
+    <blockquote>
+      <p>"Le vrai luxe, c'est de savoir qui a fabriqué ce qu'on porte. Et de pouvoir le regarder en face."</p>
+      <cite>— Berthier, Pot de départ de Thérèse, 2016</cite>
+    </blockquote>
+  </div>
+</section>
+
+<!-- CTA -->
+<section class="engagement__cta">
+  <div class="container">
+    <%= link_to "Voir les cravates", cravates_path, class: "btn btn--large" %>
+  </div>
+</section>

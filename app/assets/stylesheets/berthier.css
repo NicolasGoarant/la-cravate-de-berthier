@@ -903,17 +903,21 @@ img {
 }
 
 
+
+
+
+
 /* ===========================================
    LA CRAVATE DE BERTHIER - Hero Cravate Selector
-   Version améliorée avec indicateur visuel
+   Version avec message en bas + flèche vers la cravate
    =========================================== */
 
 /* Container de l'image Berthier */
 .hero__berthier-showcase {
   position: relative;
-  cursor: pointer;
   overflow: hidden;
   border-radius: 4px;
+  cursor: pointer;
 }
 
 /* Images de Berthier (empilées) */
@@ -925,7 +929,7 @@ img {
   height: 100%;
   object-fit: cover;
   opacity: 0;
-  transition: opacity 0.4s ease-in-out;
+  transition: opacity 0.5s ease-in-out;
   pointer-events: none;
 }
 
@@ -937,93 +941,88 @@ img {
   opacity: 1;
 }
 
-/* ========================================
-   INDICATEUR "CLIQUEZ SUR LA CRAVATE"
-   ======================================== */
-
-.hero__click-hint {
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  background: rgba(0, 0, 0, 0.85);
-  color: #fff;
-  padding: 0.75rem 1.25rem;
-  border-radius: 4px;
-  display: flex;
-  align-items: center;
-  gap: 0.6rem;
-  font-size: 0.85rem;
-  font-family: 'Courier New', Courier, monospace;
-  text-transform: uppercase;
-  letter-spacing: 0.05em;
-  transition: opacity 0.3s ease, transform 0.3s ease;
-  pointer-events: none;
-  z-index: 10;
-  animation: pulse-hint 2s infinite ease-in-out;
-  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
-}
-
-.click-hint__icon {
-  font-size: 1.2rem;
-  animation: swing-tie 1.5s infinite ease-in-out;
-}
-
-.click-hint__text {
-  white-space: nowrap;
-}
-
-/* Animation de pulsation du badge */
-@keyframes pulse-hint {
-  0%, 100% {
-    transform: translate(-50%, -50%) scale(1);
-    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
-  }
-  50% {
-    transform: translate(-50%, -50%) scale(1.03);
-    box-shadow: 0 6px 25px rgba(0, 0, 0, 0.4);
-  }
-}
-
-/* Animation de balancement de la cravate */
-@keyframes swing-tie {
-  0%, 100% {
-    transform: rotate(-5deg);
-  }
-  50% {
-    transform: rotate(5deg);
-  }
-}
-
-/* ========================================
-   EFFET DE SURVOL SUR L'IMAGE
-   ======================================== */
-
-.hero__berthier-showcase::before {
+/* Effet au survol */
+.hero__berthier-showcase::after {
   content: '';
   position: absolute;
   top: 0;
   left: 0;
   right: 0;
   bottom: 0;
-  background: transparent;
+  background: rgba(0, 0, 0, 0);
   transition: background 0.3s ease;
   pointer-events: none;
-  z-index: 5;
 }
 
-.hero__berthier-showcase:hover::before {
-  background: rgba(0, 0, 0, 0.1);
-}
-
-/* Le hint devient plus visible au survol */
-.hero__berthier-showcase:hover .hero__click-hint {
-  background: rgba(0, 0, 0, 0.95);
-  transform: translate(-50%, -50%) scale(1.05);
+.hero__berthier-showcase:hover::after {
+  background: rgba(0, 0, 0, 0.03);
 }
 
 /* ========================================
-   SÉLECTEUR DE CRAVATES SOUS L'IMAGE
+   MESSAGE « UN CLIC, UNE CRAVATE, UN CRACK »
+   En bas de l'image (niveau clavier), flèche vers le haut
+   ======================================== */
+
+.hero__click-message {
+  position: absolute;
+  /* En bas, au niveau du clavier */
+  bottom: 15%;
+  left: 50%;
+  transform: translateX(-50%);
+  background: rgba(0, 0, 0, 0.9);
+  color: #fff;
+  padding: 12px 20px;
+  border-radius: 4px;
+  font-family: 'Courier New', Courier, monospace;
+  font-size: 0.95rem;
+  font-weight: 600;
+  letter-spacing: 0.01em;
+  z-index: 10;
+  animation: pulse-message 2s ease-in-out infinite;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.4);
+  transition: opacity 0.3s ease, transform 0.3s ease;
+  white-space: nowrap;
+}
+
+.hero__click-message span {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+/* Flèche qui pointe vers le haut (vers la cravate) */
+.hero__click-message::before {
+  content: '';
+  position: absolute;
+  top: -12px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 0;
+  height: 0;
+  border-left: 10px solid transparent;
+  border-right: 10px solid transparent;
+  border-bottom: 12px solid rgba(0, 0, 0, 0.9);
+}
+
+/* Animation de pulsation pour attirer l'attention */
+@keyframes pulse-message {
+  0%, 100% {
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.4);
+  }
+  50% {
+    box-shadow: 0 4px 30px rgba(0, 0, 0, 0.6), 0 0 20px rgba(255, 255, 255, 0.1);
+  }
+}
+
+/* Cacher le message après interaction */
+.hero__click-message.hidden {
+  opacity: 0;
+  transform: translateX(-50%) translateY(20px);
+  pointer-events: none;
+}
+
+/* ========================================
+   SÉLECTEUR - PASTILLES DE COULEUR
    ======================================== */
 
 .hero__cravate-selector {
@@ -1036,82 +1035,108 @@ img {
 .selector__label {
   display: block;
   font-family: 'Courier New', Courier, monospace;
-  font-size: 0.75rem;
+  font-size: 0.7rem;
   text-transform: uppercase;
-  letter-spacing: 0.1em;
+  letter-spacing: 0.08em;
   color: #666;
   margin-bottom: 0.75rem;
+  text-align: center;
 }
 
 .selector__options {
   display: flex;
-  gap: 0.5rem;
+  gap: 8px;
   flex-wrap: wrap;
+  justify-content: center;
 }
 
-.selector__btn {
-  display: flex;
-  align-items: center;
-  gap: 0.5rem;
-  padding: 0.5rem 0.75rem;
-  background: #fff;
-  border: 2px solid #e5e4e0;
-  cursor: pointer;
-  transition: all 0.2s ease;
-  font-family: 'Courier New', Courier, monospace;
-  font-size: 0.75rem;
-}
-
-.selector__btn:hover {
-  border-color: #999;
-  transform: translateY(-1px);
-}
-
-.selector__btn.active {
-  border-color: #2c2c2c;
-  background: #2c2c2c;
-  color: #fff;
-}
-
-.selector__btn.active .selector__swatch {
-  box-shadow: 0 0 0 2px #fff;
-}
-
-.selector__swatch {
-  width: 16px;
-  height: 16px;
+/* Pastilles de couleur */
+.selector__dot {
+  width: 24px;
+  height: 24px;
   border-radius: 50%;
   background-color: var(--swatch-color);
-  border: 1px solid rgba(0, 0, 0, 0.1);
-  flex-shrink: 0;
+  border: 2px solid #fff;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.15);
+  padding: 0;
 }
 
-.selector__name {
-  white-space: nowrap;
+.selector__dot:hover {
+  transform: scale(1.2);
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.25);
+}
+
+.selector__dot.active {
+  border-color: #2c2c2c;
+  transform: scale(1.25);
+  box-shadow: 0 0 0 2px #2c2c2c, 0 2px 6px rgba(0, 0, 0, 0.2);
 }
 
 /* ========================================
    RESPONSIVE
    ======================================== */
 
+@media (max-width: 992px) {
+  .hero__berthier-img {
+    object-position: 30% center;
+  }
+
+  .hero__click-message {
+    bottom: 12%;
+    font-size: 0.85rem;
+    padding: 10px 16px;
+  }
+}
+
 @media (max-width: 768px) {
-  .hero__click-hint {
+  .hero__title {
+    font-size: 2rem;
+    line-height: 1.1;
+  }
+
+  .hero__berthier-img {
+    object-position: 25% center;
+  }
+
+  .selector__dot {
+    width: 20px;
+    height: 20px;
+  }
+
+  .selector__options {
+    gap: 6px;
+  }
+
+  .selector__label {
+    font-size: 0.65rem;
+  }
+
+  .hero__click-message {
+    bottom: 10%;
     font-size: 0.75rem;
-    padding: 0.6rem 1rem;
+    padding: 8px 14px;
+  }
+}
+
+@media (max-width: 480px) {
+  .hero__title {
+    font-size: 1.6rem;
   }
 
-  .selector__btn {
-    flex: 1;
-    justify-content: center;
-    min-width: 0;
+  .hero__berthier-img {
+    object-position: 20% center;
   }
 
-  .selector__name {
-    display: none;
+  .selector__dot {
+    width: 18px;
+    height: 18px;
   }
 
-  .selector__swatch {
-    width: 24px;
-    height: 24px;
+  .hero__click-message {
+    font-size: 0.7rem;
+    padding: 6px 12px;
+    bottom: 8%;
   }
 }

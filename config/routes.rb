@@ -12,4 +12,9 @@ Rails.application.routes.draw do
 
   # Cravates
   resources :cravates, only: [:index, :show]
+
+  get 'engagements/ecologique', to: 'engagements#ecologique', as: :engagement_ecologique
+  get 'engagements/feministe', to: 'engagements#feministe', as: :engagement_feministe
+  get 'engagements/solidaire', to: 'engagements#solidaire', as: :engagement_solidaire
+
 end

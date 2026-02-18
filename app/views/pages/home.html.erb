@@ -1,0 +1,289 @@
+<% content_for :page_class, "berthier-home" %>
+
+<!-- Flash messages -->
+<% if flash[:notice] %>
+  <div class="flash flash--notice"><%= flash[:notice] %></div>
+<% end %>
+<% if flash[:alert] %>
+  <div class="flash flash--alert"><%= flash[:alert] %></div>
+<% end %>
+
+<!-- Header / Navigation -->
+<header class="main-header">
+  <div class="container">
+    <nav class="main-nav">
+      <div class="brand">
+        <%= link_to root_path, class: "brand__link" do %>
+          <span class="brand__name">LA CRAVATE DE BERTHIER</span>
+          <span class="brand__tagline">L'élégance administrative depuis 1994</span>
+        <% end %>
+      </div>
+      <ul class="main-nav__links">
+        <li><a href="#valeurs">Nos valeurs</a></li>
+        <li><%= link_to "Catalogue", cravates_path %></li>
+        <li><a href="#manifeste">Le manifeste</a></li>
+        <li><a href="#newsletter" class="btn btn--nav">S'inscrire</a></li>
+      </ul>
+      <button class="mobile-menu-toggle" aria-label="Menu">
+        <span></span>
+        <span></span>
+        <span></span>
+      </button>
+    </nav>
+  </div>
+</header>
+
+<main class="berthier-home">
+  <!-- Hero Section avec sélecteur de cravates -->
+  <section class="hero">
+    <div class="hero__grid">
+      <div class="hero__copy">
+        <h1 class="hero__title"><%= @hero[:title].html_safe %></h1>
+        <p class="hero__subtitle"><%= @hero[:subtitle] %></p>
+        <div class="hero__cta">
+          <%= link_to @hero[:cta_text], cravates_path, class: "btn btn--large" %>
+        </div>
+      </div>
+      <div class="hero__img-container">
+        <!-- Image principale de Berthier -->
+        <div class="hero__berthier-showcase">
+          <% @hero_cravates.each_with_index do |cravate, index| %>
+            <%= image_tag cravate[:image],
+                alt: "Berthier porte #{cravate[:name]}",
+                class: "hero__berthier-img #{index == 0 ? 'active' : ''}",
+                data: { cravate_index: index } %>
+          <% end %>
+
+          <!-- Indicateur "Cliquez pour changer" -->
+          <div class="hero__click-hint">
+            <span class="click-hint__icon">👔</span>
+            <span class="click-hint__text">Cliquez pour changer de cravate</span>
+          </div>
+        </div>
+
+        <!-- Sélecteur de cravates -->
+        <div class="hero__cravate-selector">
+          <span class="selector__label">Essayez nos modèles :</span>
+          <div class="selector__options">
+            <% @hero_cravates.each_with_index do |cravate, index| %>
+              <button class="selector__btn <%= 'active' if index == 0 %>"
+                      data-cravate-index="<%= index %>"
+                      style="--swatch-color: <%= cravate[:swatch_color] %>"
+                      title="<%= cravate[:name] %>">
+                <span class="selector__swatch"></span>
+                <span class="selector__name"><%= cravate[:name] %></span>
+              </button>
+            <% end %>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Piliers / Valeurs - VERSION AMPLIFIÉE -->
+  <section id="valeurs" class="values-hero">
+    <div class="container">
+      <div class="values-hero__intro">
+        <h2 class="values-hero__title">TROIS ENGAGEMENTS.<br>PAS DE COMPROMIS.</h2>
+        <p class="values-hero__subtitle">La cravate qui assume ses convictions, même si ça froisse quelques chemises.</p>
+      </div>
+
+      <div class="values-grid">
+        <% @pillars.each_with_index do |pillar, index| %>
+          <article class="value-card value-card--<%= index + 1 %>">
+            <div class="value-card__header">
+              <span class="value-card__ref"><%= pillar[:ref] %></span>
+              <div class="value-card__icon">
+                <% case index %>
+                <% when 0 %>
+                  <!-- Icône écologie -->
+                  <svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <path d="M12 2v20M2 12h20M17 7l-5 5-5-5M7 17l5-5 5 5"/>
+                  </svg>
+                <% when 1 %>
+                  <!-- Icône féminisme -->
+                  <svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <circle cx="12" cy="8" r="4"/>
+                    <path d="M3 21v-2a4 4 0 0 1 4-4h10a4 4 0 0 1 4 4v2"/>
+                  </svg>
+                <% when 2 %>
+                  <!-- Icône solidarité -->
+                  <svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/>
+                    <circle cx="9" cy="7" r="4"/>
+                    <path d="M23 21v-2a4 4 0 0 0-3-3.87"/>
+                    <path d="M16 3.13a4 4 0 0 1 0 7.75"/>
+                  </svg>
+                <% end %>
+              </div>
+            </div>
+            <h3 class="value-card__title"><%= pillar[:title] %></h3>
+            <p class="value-card__description"><%= pillar[:description] %></p>
+            <div class="value-card__cta">
+              <%= link_to "En savoir plus →", cravates_path, class: "value-card__link" %>
+            </div>
+          </article>
+        <% end %>
+      </div>
+
+      <!-- Bannière d'engagement -->
+      <div class="values-banner">
+        <div class="values-banner__stat">
+          <span class="values-banner__number">10%</span>
+          <span class="values-banner__label">de nos bénéfices reversés</span>
+        </div>
+        <div class="values-banner__stat">
+          <span class="values-banner__number">100%</span>
+          <span class="values-banner__label">Lin bio français</span>
+        </div>
+        <div class="values-banner__stat">
+          <span class="values-banner__number">ESS</span>
+          <span class="values-banner__label">Ateliers solidaires</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Collection de produits -->
+  <section id="produit" class="products">
+    <div class="container">
+      <h2 class="section-title">LE CATALOGUE ADMINISTRATIF</h2>
+      <p class="section-subtitle">Trois cravates. Pas une de plus. On ne fait pas dans l'excès.</p>
+
+      <div class="products__grid">
+        <% @cravates.each do |cravate| %>
+          <%= link_to cravate_path(cravate), class: "product-card" do %>
+            <div class="product-card__badge">
+              <%= cravate.material %>
+            </div>
+            <div class="product-card__img">
+              <% if cravate.photos.attached? %>
+                <%= image_tag cravate.photos.first, alt: cravate.name %>
+              <% else %>
+                <div class="product-img-placeholder">
+                  [IMAGE <%= cravate.reference %>]
+                </div>
+              <% end %>
+            </div>
+            <div class="product-card__content">
+              <span class="product-card__ref"><%= cravate.reference %></span>
+              <h3 class="product-card__name"><%= cravate.name %></h3>
+              <p class="product-card__description"><%= truncate(cravate.description, length: 100) %></p>
+              <div class="product-card__footer">
+                <span class="product-card__price"><%= number_to_currency(cravate.price, unit: "€", format: "%n%u") %></span>
+                <% if cravate.available? %>
+                  <span class="btn btn--small">Commander</span>
+                <% else %>
+                  <span class="product-card__stock">Rupture de stock</span>
+                <% end %>
+              </div>
+            </div>
+          <% end %>
+        <% end %>
+      </div>
+    </div>
+  </section>
+
+  <!-- Bio Berthier -->
+  <section id="manifeste" class="bio">
+    <div class="container">
+      <div class="bio__content">
+        <h2 class="section-title"><%= @bio[:title] %></h2>
+        <blockquote class="bio__quote">
+          "<%= @bio[:quote] %>"
+        </blockquote>
+        <p class="bio__text"><%= @bio[:content] %></p>
+        <p class="bio__signature"><%= @bio[:signature] %></p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Newsletter -->
+  <section id="newsletter" class="newsletter">
+    <div class="container">
+      <div class="newsletter__box">
+        <h2><%= @newsletter[:title] %></h2>
+        <p><%= @newsletter[:description] %></p>
+        <%= form_with url: subscribe_newsletter_path, method: :post, local: true, class: "newsletter__form" do |form| %>
+          <%= form.email_field :email,
+              placeholder: @newsletter[:placeholder],
+              required: true,
+              class: "newsletter__input" %>
+          <%= form.submit @newsletter[:button], class: "btn" %>
+        <% end %>
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer class="footer">
+    <div class="container">
+      <div class="footer__content">
+        <div class="footer__brand">
+          <strong>LA CRAVATE DE BERTHIER</strong>
+          <p class="footer__tagline">L'élégance de la déconstruction</p>
+        </div>
+        <nav class="footer__nav">
+          <% @footer[:links].each do |link| %>
+            <%= link_to link[:text], link[:url], class: "footer__link" %>
+          <% end %>
+        </nav>
+        <p class="footer__legal">
+          © <%= @footer[:year] %> <%= @footer[:company] %> | <%= @footer[:legal] %>
+        </p>
+      </div>
+    </div>
+  </footer>
+</main>
+
+<script>
+// Menu mobile toggle
+document.querySelector('.mobile-menu-toggle')?.addEventListener('click', function() {
+  document.querySelector('.main-nav__links').classList.toggle('active');
+  this.classList.toggle('active');
+});
+
+// Sélecteur de cravates
+document.addEventListener('DOMContentLoaded', function() {
+  const images = document.querySelectorAll('.hero__berthier-img');
+  const buttons = document.querySelectorAll('.selector__btn');
+  const showcase = document.querySelector('.hero__berthier-showcase');
+  let currentIndex = 0;
+
+  // Fonction pour changer de cravate
+  function switchCravate(index) {
+    // Retirer la classe active de toutes les images et boutons
+    images.forEach(img => img.classList.remove('active'));
+    buttons.forEach(btn => btn.classList.remove('active'));
+
+    // Ajouter la classe active à l'image et au bouton sélectionnés
+    images[index].classList.add('active');
+    buttons[index].classList.add('active');
+
+    currentIndex = index;
+  }
+
+  // Clic sur les boutons du sélecteur
+  buttons.forEach((btn, index) => {
+    btn.addEventListener('click', () => switchCravate(index));
+  });
+
+  // Clic sur l'image pour passer à la suivante
+  showcase?.addEventListener('click', function(e) {
+    // Ne pas déclencher si on clique sur le hint
+    if (e.target.closest('.hero__click-hint')) return;
+
+    const nextIndex = (currentIndex + 1) % images.length;
+    switchCravate(nextIndex);
+  });
+
+  // Cacher le hint après le premier clic
+  showcase?.addEventListener('click', function() {
+    const hint = document.querySelector('.hero__click-hint');
+    if (hint) {
+      hint.style.opacity = '0';
+      setTimeout(() => hint.style.display = 'none', 300);
+    }
+  }, { once: true });
+});
+</script>

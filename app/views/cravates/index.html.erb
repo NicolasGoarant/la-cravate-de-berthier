@@ -1,0 +1,122 @@
+<% content_for :page_class, "berthier-cravates" %>
+
+<!-- Header / Navigation -->
+<header class="main-header">
+  <div class="container">
+    <nav class="main-nav">
+      <div class="brand">
+        <%= link_to root_path, class: "brand__link" do %>
+          <span class="brand__name">LA CRAVATE DE BERTHIER</span>
+          <span class="brand__tagline">L'élégance administrative depuis 1994</span>
+        <% end %>
+      </div>
+      <ul class="main-nav__links">
+        <li><%= link_to "Nos valeurs", root_path(anchor: "valeurs") %></li>
+        <li><%= link_to "Catalogue", cravates_path, class: "active" %></li>
+        <li><%= link_to "Le manifeste", root_path(anchor: "manifeste") %></li>
+        <li><%= link_to "S'inscrire", root_path(anchor: "newsletter"), class: "btn btn--nav" %></li>
+      </ul>
+      <button class="mobile-menu-toggle" aria-label="Menu">
+        <span></span>
+        <span></span>
+        <span></span>
+      </button>
+    </nav>
+  </div>
+</header>
+
+<main class="berthier-cravates">
+  <!-- Hero Catalogue -->
+  <section class="catalogue-hero">
+    <div class="container">
+      <h1 class="catalogue-hero__title">LE CATALOGUE ADMINISTRATIF</h1>
+      <p class="catalogue-hero__subtitle">Trois cravates. Pas une de plus. On ne fait pas dans l'excès.</p>
+    </div>
+  </section>
+
+  <!-- Grille des cravates -->
+  <section class="catalogue-grid">
+    <div class="container">
+      <div class="cravates__grid">
+        <% @cravates.each do |cravate| %>
+          <%= link_to cravate_path(cravate), class: "cravate-card" do %>
+            <div class="cravate-card__badge">
+              <%= cravate.material %>
+            </div>
+            <div class="cravate-card__img">
+              <% if cravate.photos.attached? %>
+                <%= image_tag cravate.photos.first, alt: cravate.name %>
+              <% else %>
+                <div class="cravate-img-placeholder">
+                  <span class="placeholder-icon">👔</span>
+                  <span class="placeholder-ref"><%= cravate.reference %></span>
+                </div>
+              <% end %>
+            </div>
+            <div class="cravate-card__content">
+              <span class="cravate-card__ref"><%= cravate.reference %></span>
+              <h2 class="cravate-card__name"><%= cravate.name %></h2>
+              <p class="cravate-card__color"><%= cravate.color %></p>
+              <div class="cravate-card__footer">
+                <span class="cravate-card__price"><%= number_to_currency(cravate.price, unit: "€", format: "%n %u") %></span>
+                <% if cravate.available? %>
+                  <span class="cravate-card__stock cravate-card__stock--available">En stock</span>
+                <% else %>
+                  <span class="cravate-card__stock cravate-card__stock--out">Rupture de stock</span>
+                <% end %>
+              </div>
+            </div>
+          <% end %>
+        <% end %>
+      </div>
+    </div>
+  </section>
+
+  <!-- Bandeau d'engagement -->
+  <section class="catalogue-values">
+    <div class="container">
+      <div class="values-banner">
+        <div class="values-banner__stat">
+          <span class="values-banner__number">10%</span>
+          <span class="values-banner__label">de nos bénéfices reversés</span>
+        </div>
+        <div class="values-banner__stat">
+          <span class="values-banner__number">100%</span>
+          <span class="values-banner__label">Lin bio français</span>
+        </div>
+        <div class="values-banner__stat">
+          <span class="values-banner__number">ESS</span>
+          <span class="values-banner__label">Ateliers solidaires</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer class="footer">
+    <div class="container">
+      <div class="footer__content">
+        <div class="footer__brand">
+          <strong>LA CRAVATE DE BERTHIER</strong>
+          <p class="footer__tagline">L'élégance de la déconstruction</p>
+        </div>
+        <nav class="footer__nav">
+          <%= link_to "CGV", "#", class: "footer__link" %>
+          <%= link_to "Mentions légales", "#", class: "footer__link" %>
+          <%= link_to "Contact", "#", class: "footer__link" %>
+        </nav>
+        <p class="footer__legal">
+          © <%= Date.current.year %> LA CRAVATE DE BERTHIER | E.U.R.L. au capital de 100 chemises
+        </p>
+      </div>
+    </div>
+  </footer>
+</main>
+
+<script>
+// Menu mobile toggle
+document.querySelector('.mobile-menu-toggle')?.addEventListener('click', function() {
+  document.querySelector('.main-nav__links').classList.toggle('active');
+  this.classList.toggle('active');
+});
+</script>

@@ -1,0 +1,1117 @@
+:root {
+  --beige-bureau: #e2ded0;
+  --gris-archive: #a9a9a9;
+  --vert-dossier: #8f9779;
+  --noir-encre: #1a1a1a;
+  --blanc-papier: #f5f5f5;
+  --bleu-calque: #3e5f8a;
+  --border-strong: 3px solid var(--noir-encre);
+}
+
+/* ======================
+   BASE
+====================== */
+* {
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  margin: 0;
+  padding: 0;
+  font-family: 'Courier New', Courier, monospace;
+  background: var(--beige-bureau);
+  color: var(--noir-encre);
+  line-height: 1.6;
+  overflow-x: hidden;
+}
+
+img {
+  max-width: 100%;
+  height: auto;
+  display: block;
+}
+
+.container {
+  max-width: 1100px;
+  margin: 0 auto;
+  padding: 0 20px;
+}
+
+/* ======================
+   HEADER / NAVIGATION
+====================== */
+.main-header {
+  background: var(--blanc-papier);
+  border-bottom: var(--border-strong);
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+  box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+}
+
+.main-nav {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 15px 0;
+  gap: 20px;
+  position: relative;
+}
+
+.brand__link {
+  text-decoration: none;
+  color: var(--noir-encre);
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+  transition: opacity 0.2s;
+}
+
+.brand__link:hover {
+  opacity: 0.7;
+}
+
+.brand__name {
+  font-family: "Helvetica Neue", Arial, sans-serif;
+  font-size: 1.1rem;
+  font-weight: 900;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  line-height: 1.2;
+}
+
+.brand__tagline {
+  font-size: 0.65rem;
+  color: var(--gris-archive);
+  text-transform: uppercase;
+  letter-spacing: 0.3px;
+}
+
+.main-nav__links {
+  display: flex;
+  list-style: none;
+  gap: 25px;
+  align-items: center;
+  margin: 0;
+  padding: 0;
+}
+
+.main-nav__links a {
+  text-decoration: none;
+  color: var(--noir-encre);
+  font-weight: bold;
+  font-size: 0.8rem;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  transition: color 0.2s;
+  white-space: nowrap;
+}
+
+.main-nav__links a:hover {
+  color: var(--bleu-calque);
+}
+
+.btn--nav {
+  padding: 8px 16px;
+  font-size: 0.75rem;
+}
+
+.mobile-menu-toggle {
+  display: none;
+  flex-direction: column;
+  gap: 4px;
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 8px;
+}
+
+.mobile-menu-toggle span {
+  display: block;
+  width: 22px;
+  height: 2px;
+  background: var(--noir-encre);
+  transition: 0.3s;
+}
+
+/* ======================
+   HERO SECTION
+====================== */
+.hero {
+  min-height: calc(100vh - 70px);
+  display: flex;
+  align-items: center;
+  background-color: var(--beige-bureau);
+  padding: 0;
+  border-bottom: var(--border-strong);
+}
+
+.hero__grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  width: 100%;
+  min-height: calc(100vh - 70px);
+}
+
+.hero__copy {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding: 8%;
+}
+
+.hero__title {
+  font-family: "Helvetica Neue", Arial, sans-serif;
+  font-size: clamp(2rem, 5vw, 4.5rem);
+  font-weight: 900;
+  line-height: 0.9;
+  text-transform: uppercase;
+  margin-bottom: 25px;
+}
+
+.hero__subtitle {
+  background: var(--noir-encre);
+  color: var(--blanc-papier);
+  padding: 10px 18px;
+  font-size: clamp(0.9rem, 2vw, 1.1rem);
+  display: inline-block;
+  margin-top: 20px;
+  max-width: fit-content;
+}
+
+.hero__cta {
+  margin-top: 35px;
+}
+
+.hero__img-container {
+  border-left: var(--border-strong);
+  position: relative;
+  overflow: hidden;
+}
+
+.hero__img-container img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center;
+}
+
+/* ======================
+   VALEURS
+====================== */
+.values-hero {
+  background: linear-gradient(135deg, var(--vert-dossier) 0%, #6a7560 100%);
+  padding: 100px 0;
+  color: var(--blanc-papier);
+  border-bottom: var(--border-strong);
+}
+
+.values-hero__intro {
+  text-align: center;
+  margin-bottom: 70px;
+  max-width: 900px;
+  margin-left: auto;
+  margin-right: auto;
+  padding: 0 20px;
+}
+
+.values-hero__title {
+  font-family: "Helvetica Neue", Arial, sans-serif;
+  font-size: clamp(1.8rem, 5vw, 3.5rem);
+  font-weight: 900;
+  text-transform: uppercase;
+  line-height: 1;
+  margin-bottom: 20px;
+  color: var(--blanc-papier);
+}
+
+.values-hero__subtitle {
+  font-size: clamp(1rem, 2.5vw, 1.3rem);
+  opacity: 0.9;
+  line-height: 1.6;
+}
+
+.values-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 30px;
+  margin-bottom: 70px;
+}
+
+.value-card {
+  background: var(--blanc-papier);
+  color: var(--noir-encre);
+  padding: 40px 30px;
+  border: 3px solid var(--noir-encre);
+  transition: transform 0.3s, box-shadow 0.3s;
+}
+
+.value-card:hover {
+  transform: translateY(-8px);
+  box-shadow: 12px 12px 0 var(--noir-encre);
+}
+
+.value-card__header {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  margin-bottom: 20px;
+  flex-wrap: wrap;
+  gap: 10px;
+}
+
+.value-card__ref {
+  font-size: 0.65rem;
+  font-weight: bold;
+  color: var(--bleu-calque);
+  letter-spacing: 0.5px;
+  text-transform: uppercase;
+}
+
+.value-card__icon {
+  width: 40px;
+  height: 40px;
+  color: var(--vert-dossier);
+  flex-shrink: 0;
+}
+
+.value-card__title {
+  font-family: "Helvetica Neue", Arial, sans-serif;
+  font-size: clamp(1.5rem, 3vw, 2rem);
+  font-weight: 900;
+  text-transform: uppercase;
+  margin-bottom: 18px;
+  line-height: 1.1;
+}
+
+.value-card__description {
+  font-size: 0.95rem;
+  line-height: 1.7;
+  margin-bottom: 25px;
+}
+
+.value-card__link {
+  color: var(--noir-encre);
+  text-decoration: none;
+  font-weight: bold;
+  font-size: 0.85rem;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.values-banner {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+  gap: 30px;
+  background: var(--noir-encre);
+  padding: 50px 40px;
+  border: 3px solid var(--noir-encre);
+  text-align: center;
+}
+
+.values-banner__number {
+  font-family: "Helvetica Neue", Arial, sans-serif;
+  font-size: clamp(2.5rem, 6vw, 4rem);
+  font-weight: 900;
+  color: var(--blanc-papier);
+  line-height: 1;
+  display: block;
+  margin-bottom: 8px;
+}
+
+.values-banner__label {
+  font-size: clamp(0.75rem, 1.5vw, 0.9rem);
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  color: var(--beige-bureau);
+}
+
+/* ======================
+   PRODUITS
+====================== */
+.products {
+  padding: 100px 0;
+  background: var(--beige-bureau);
+}
+
+.section-title {
+  font-family: "Helvetica Neue", Arial, sans-serif;
+  font-size: clamp(1.8rem, 4vw, 2.5rem);
+  font-weight: 900;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  margin-bottom: 15px;
+  text-align: center;
+}
+
+.section-subtitle {
+  text-align: center;
+  font-size: clamp(0.95rem, 2vw, 1.1rem);
+  color: var(--gris-archive);
+  margin-bottom: 50px;
+}
+
+.products__grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 35px;
+  margin-top: 50px;
+}
+
+.product-card {
+  background: var(--blanc-papier);
+  border: 2px solid var(--noir-encre);
+  position: relative;
+  transition: transform 0.2s, box-shadow 0.2s;
+}
+
+.product-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 8px 8px 0 var(--noir-encre);
+}
+
+.product-card__badge {
+  position: absolute;
+  top: 15px;
+  right: 15px;
+  background: var(--noir-encre);
+  color: var(--blanc-papier);
+  padding: 4px 10px;
+  font-size: 0.65rem;
+  font-weight: bold;
+  letter-spacing: 0.5px;
+  z-index: 2;
+}
+
+.product-card__img {
+  width: 100%;
+  aspect-ratio: 1;
+  background: var(--gris-archive);
+  border-bottom: 2px solid var(--noir-encre);
+}
+
+.product-img-placeholder {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--blanc-papier);
+  font-weight: bold;
+  font-size: 0.85rem;
+}
+
+.product-card__content {
+  padding: 25px;
+}
+
+.product-card__ref {
+  font-size: 0.7rem;
+  color: var(--bleu-calque);
+  font-weight: bold;
+  display: block;
+  margin-bottom: 8px;
+}
+
+.product-card__name {
+  font-family: "Helvetica Neue", Arial, sans-serif;
+  font-size: clamp(1.2rem, 2.5vw, 1.5rem);
+  font-weight: 900;
+  text-transform: uppercase;
+  margin-bottom: 12px;
+  line-height: 1.2;
+}
+
+.product-card__description {
+  font-size: 0.88rem;
+  line-height: 1.6;
+  margin-bottom: 20px;
+  color: #333;
+}
+
+.product-card__footer {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 15px;
+  flex-wrap: wrap;
+}
+
+.product-card__price {
+  font-size: clamp(1.2rem, 2.5vw, 1.5rem);
+  font-weight: bold;
+}
+
+.product-card__stock {
+  font-size: 0.8rem;
+  color: var(--gris-archive);
+  font-style: italic;
+}
+
+/* ======================
+   BIO
+====================== */
+.bio {
+  background: var(--noir-encre);
+  color: var(--blanc-papier);
+  padding: 100px 0;
+  text-align: center;
+}
+
+.bio__content {
+  max-width: 800px;
+  margin: 0 auto;
+  padding: 0 20px;
+}
+
+.bio .section-title {
+  color: var(--blanc-papier);
+}
+
+.bio__quote {
+  font-size: clamp(1.3rem, 3vw, 2rem);
+  font-style: italic;
+  line-height: 1.3;
+  margin: 35px 0;
+  font-weight: 300;
+}
+
+.bio__text {
+  font-size: clamp(0.95rem, 2vw, 1.1rem);
+  line-height: 1.8;
+  margin-bottom: 25px;
+  color: var(--beige-bureau);
+}
+
+.bio__signature {
+  font-size: 0.85rem;
+  font-style: italic;
+  opacity: 0.7;
+}
+
+/* ======================
+   NEWSLETTER
+====================== */
+.newsletter {
+  background: var(--beige-bureau);
+  padding: 100px 0;
+  text-align: center;
+}
+
+.newsletter__box {
+  max-width: 700px;
+  margin: 0 auto;
+  border: 3px solid var(--noir-encre);
+  padding: 50px 30px;
+  background: var(--blanc-papier);
+}
+
+.newsletter h2 {
+  font-family: "Helvetica Neue", Arial, sans-serif;
+  font-size: clamp(1.5rem, 3vw, 2rem);
+  font-weight: 900;
+  text-transform: uppercase;
+  margin-bottom: 18px;
+  line-height: 1.2;
+}
+
+.newsletter p {
+  margin-bottom: 28px;
+  font-size: clamp(0.9rem, 2vw, 1rem);
+  line-height: 1.6;
+}
+
+.newsletter__form {
+  display: flex;
+  gap: 10px;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+
+.newsletter__input {
+  padding: 14px 18px;
+  border: 2px solid var(--noir-encre);
+  background: var(--blanc-papier);
+  color: var(--noir-encre);
+  font-family: inherit;
+  font-size: 0.95rem;
+  flex: 1;
+  min-width: 250px;
+  max-width: 100%;
+}
+
+.newsletter__input:focus {
+  outline: none;
+  border-color: var(--bleu-calque);
+}
+
+/* ======================
+   BUTTONS
+====================== */
+.btn {
+  appearance: none;
+  border: 2px solid var(--noir-encre);
+  background: var(--noir-encre);
+  color: var(--blanc-papier);
+  padding: 14px 28px;
+  text-decoration: none;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  cursor: pointer;
+  transition: 0.2s;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 0.85rem;
+  font-family: inherit;
+}
+
+.btn:hover {
+  background: var(--bleu-calque);
+  border-color: var(--bleu-calque);
+}
+
+.btn--large {
+  padding: 16px 35px;
+  font-size: 0.95rem;
+}
+
+.btn--small {
+  padding: 10px 18px;
+  font-size: 0.75rem;
+}
+
+/* ======================
+   FOOTER
+====================== */
+.footer {
+  background: var(--blanc-papier);
+  padding: 50px 0 35px;
+  border-top: 3px solid var(--noir-encre);
+}
+
+.footer__content {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 30px;
+  align-items: start;
+}
+
+.footer__brand strong {
+  font-family: "Helvetica Neue", Arial, sans-serif;
+  font-size: 1rem;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  display: block;
+  margin-bottom: 5px;
+}
+
+.footer__tagline {
+  font-size: 0.7rem;
+  color: var(--gris-archive);
+  margin: 0;
+}
+
+.footer__nav {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.footer__link {
+  font-size: 0.8rem;
+  color: var(--noir-encre);
+  text-decoration: none;
+  font-weight: bold;
+}
+
+.footer__legal {
+  font-size: 0.65rem;
+  color: var(--gris-archive);
+  text-transform: uppercase;
+  letter-spacing: 0.3px;
+}
+
+/* ======================
+   FLASH MESSAGES
+====================== */
+.flash {
+  padding: 14px 18px;
+  text-align: center;
+  font-size: 0.9rem;
+  font-weight: bold;
+}
+
+.flash--notice {
+  background: rgba(143, 151, 121, 0.4);
+}
+
+.flash--alert {
+  background: rgba(212, 168, 159, 0.5);
+}
+
+/* ======================
+   RESPONSIVE
+====================== */
+
+/* Tablettes et petits laptops */
+@media (max-width: 1024px) {
+  .container {
+    padding: 0 25px;
+  }
+
+  .values-grid {
+    gap: 25px;
+  }
+
+  .value-card {
+    padding: 35px 25px;
+  }
+}
+
+/* Tablettes portrait */
+@media (max-width: 768px) {
+  /* Navigation mobile */
+  .mobile-menu-toggle {
+    display: flex;
+    order: 3;
+  }
+
+  .brand {
+    order: 1;
+  }
+
+  .main-nav__links {
+    display: none;
+    position: absolute;
+    top: 100%;
+    left: 0;
+    right: 0;
+    background: var(--blanc-papier);
+    border-top: 2px solid var(--gris-archive);
+    flex-direction: column;
+    padding: 20px;
+    gap: 18px;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+    order: 4;
+    width: 100%;
+  }
+
+  .main-nav__links.active {
+    display: flex;
+  }
+
+  .main-nav__links li {
+    width: 100%;
+    text-align: center;
+  }
+
+  .main-nav__links a {
+    display: block;
+    padding: 8px 0;
+  }
+
+  /* Hero responsive */
+  .hero {
+    min-height: auto;
+  }
+
+  .hero__grid {
+    grid-template-columns: 1fr;
+    min-height: auto;
+  }
+
+  .hero__copy {
+    order: 2;
+    padding: 50px 25px;
+  }
+
+  .hero__img-container {
+    order: 1;
+    border-left: none;
+    border-bottom: var(--border-strong);
+    min-height: 400px;
+    max-height: 60vh;
+  }
+
+  /* Valeurs */
+  .values-hero {
+    padding: 70px 0;
+  }
+
+  .values-hero__intro {
+    margin-bottom: 50px;
+  }
+
+  .values-grid {
+    grid-template-columns: 1fr;
+    margin-bottom: 50px;
+  }
+
+  .values-banner {
+    padding: 40px 25px;
+    gap: 35px;
+  }
+
+  /* Produits */
+  .products {
+    padding: 70px 0;
+  }
+
+  .products__grid {
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 30px;
+  }
+
+  /* Bio */
+  .bio {
+    padding: 70px 0;
+  }
+
+  /* Newsletter */
+  .newsletter {
+    padding: 70px 0;
+  }
+
+  .newsletter__box {
+    padding: 40px 25px;
+  }
+
+  .newsletter__form {
+    flex-direction: column;
+  }
+
+  .newsletter__input {
+    width: 100%;
+    min-width: auto;
+  }
+
+  /* Footer */
+  .footer__content {
+    grid-template-columns: 1fr;
+    text-align: center;
+    gap: 25px;
+  }
+
+  .footer__nav {
+    align-items: center;
+  }
+}
+
+/* Mobile portrait */
+@media (max-width: 480px) {
+  .container {
+    padding: 0 18px;
+  }
+
+  .brand__name {
+    font-size: 0.95rem;
+  }
+
+  .brand__tagline {
+    font-size: 0.6rem;
+  }
+
+  .hero__copy {
+    padding: 40px 20px;
+  }
+
+  .hero__img-container {
+    min-height: 350px;
+  }
+
+  .values-hero {
+    padding: 50px 0;
+  }
+
+  .values-hero__intro {
+    margin-bottom: 40px;
+  }
+
+  .value-card {
+    padding: 30px 20px;
+  }
+
+  .values-banner {
+    padding: 35px 20px;
+    gap: 30px;
+  }
+
+  .products {
+    padding: 50px 0;
+  }
+
+  .products__grid {
+    grid-template-columns: 1fr;
+    gap: 25px;
+  }
+
+  .product-card__content {
+    padding: 20px;
+  }
+
+  .bio {
+    padding: 50px 0;
+  }
+
+  .newsletter {
+    padding: 50px 0;
+  }
+
+  .newsletter__box {
+    padding: 35px 20px;
+  }
+
+  .footer {
+    padding: 40px 0 30px;
+  }
+}
+
+/* Très petits écrans */
+@media (max-width: 360px) {
+  .container {
+    padding: 0 15px;
+  }
+
+  .hero__img-container {
+    min-height: 300px;
+  }
+
+  .value-card {
+    padding: 25px 18px;
+  }
+
+  .values-banner {
+    padding: 30px 18px;
+  }
+
+  .product-card__content {
+    padding: 18px;
+  }
+
+  .newsletter__box {
+    padding: 30px 18px;
+  }
+}
+
+
+/* ===========================================
+   LA CRAVATE DE BERTHIER - Hero Cravate Selector
+   Version améliorée avec indicateur visuel
+   =========================================== */
+
+/* Container de l'image Berthier */
+.hero__berthier-showcase {
+  position: relative;
+  cursor: pointer;
+  overflow: hidden;
+  border-radius: 4px;
+}
+
+/* Images de Berthier (empilées) */
+.hero__berthier-img {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  opacity: 0;
+  transition: opacity 0.4s ease-in-out;
+  pointer-events: none;
+}
+
+.hero__berthier-img:first-child {
+  position: relative;
+}
+
+.hero__berthier-img.active {
+  opacity: 1;
+}
+
+/* ========================================
+   INDICATEUR "CLIQUEZ SUR LA CRAVATE"
+   ======================================== */
+
+.hero__click-hint {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background: rgba(0, 0, 0, 0.85);
+  color: #fff;
+  padding: 0.75rem 1.25rem;
+  border-radius: 4px;
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+  font-size: 0.85rem;
+  font-family: 'Courier New', Courier, monospace;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  transition: opacity 0.3s ease, transform 0.3s ease;
+  pointer-events: none;
+  z-index: 10;
+  animation: pulse-hint 2s infinite ease-in-out;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
+}
+
+.click-hint__icon {
+  font-size: 1.2rem;
+  animation: swing-tie 1.5s infinite ease-in-out;
+}
+
+.click-hint__text {
+  white-space: nowrap;
+}
+
+/* Animation de pulsation du badge */
+@keyframes pulse-hint {
+  0%, 100% {
+    transform: translate(-50%, -50%) scale(1);
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
+  }
+  50% {
+    transform: translate(-50%, -50%) scale(1.03);
+    box-shadow: 0 6px 25px rgba(0, 0, 0, 0.4);
+  }
+}
+
+/* Animation de balancement de la cravate */
+@keyframes swing-tie {
+  0%, 100% {
+    transform: rotate(-5deg);
+  }
+  50% {
+    transform: rotate(5deg);
+  }
+}
+
+/* ========================================
+   EFFET DE SURVOL SUR L'IMAGE
+   ======================================== */
+
+.hero__berthier-showcase::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: transparent;
+  transition: background 0.3s ease;
+  pointer-events: none;
+  z-index: 5;
+}
+
+.hero__berthier-showcase:hover::before {
+  background: rgba(0, 0, 0, 0.1);
+}
+
+/* Le hint devient plus visible au survol */
+.hero__berthier-showcase:hover .hero__click-hint {
+  background: rgba(0, 0, 0, 0.95);
+  transform: translate(-50%, -50%) scale(1.05);
+}
+
+/* ========================================
+   SÉLECTEUR DE CRAVATES SOUS L'IMAGE
+   ======================================== */
+
+.hero__cravate-selector {
+  margin-top: 1rem;
+  padding: 1rem;
+  background: #f5f4f0;
+  border: 1px solid #e5e4e0;
+}
+
+.selector__label {
+  display: block;
+  font-family: 'Courier New', Courier, monospace;
+  font-size: 0.75rem;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  color: #666;
+  margin-bottom: 0.75rem;
+}
+
+.selector__options {
+  display: flex;
+  gap: 0.5rem;
+  flex-wrap: wrap;
+}
+
+.selector__btn {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.5rem 0.75rem;
+  background: #fff;
+  border: 2px solid #e5e4e0;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  font-family: 'Courier New', Courier, monospace;
+  font-size: 0.75rem;
+}
+
+.selector__btn:hover {
+  border-color: #999;
+  transform: translateY(-1px);
+}
+
+.selector__btn.active {
+  border-color: #2c2c2c;
+  background: #2c2c2c;
+  color: #fff;
+}
+
+.selector__btn.active .selector__swatch {
+  box-shadow: 0 0 0 2px #fff;
+}
+
+.selector__swatch {
+  width: 16px;
+  height: 16px;
+  border-radius: 50%;
+  background-color: var(--swatch-color);
+  border: 1px solid rgba(0, 0, 0, 0.1);
+  flex-shrink: 0;
+}
+
+.selector__name {
+  white-space: nowrap;
+}
+
+/* ========================================
+   RESPONSIVE
+   ======================================== */
+
+@media (max-width: 768px) {
+  .hero__click-hint {
+    font-size: 0.75rem;
+    padding: 0.6rem 1rem;
+  }
+
+  .selector__btn {
+    flex: 1;
+    justify-content: center;
+    min-width: 0;
+  }
+
+  .selector__name {
+    display: none;
+  }
+
+  .selector__swatch {
+    width: 24px;
+    height: 24px;
+  }
+}

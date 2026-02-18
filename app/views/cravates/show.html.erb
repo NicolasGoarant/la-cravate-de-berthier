@@ -1,0 +1,205 @@
+<% content_for :page_class, "berthier-cravate-show" %>
+
+<!-- Header / Navigation -->
+<header class="main-header">
+  <div class="container">
+    <nav class="main-nav">
+      <div class="brand">
+        <%= link_to root_path, class: "brand__link" do %>
+          <span class="brand__name">LA CRAVATE DE BERTHIER</span>
+          <span class="brand__tagline">L'élégance administrative depuis 1994</span>
+        <% end %>
+      </div>
+      <ul class="main-nav__links">
+        <li><%= link_to "Nos valeurs", root_path(anchor: "valeurs") %></li>
+        <li><%= link_to "Catalogue", cravates_path %></li>
+        <li><%= link_to "Le manifeste", root_path(anchor: "manifeste") %></li>
+        <li><%= link_to "S'inscrire", root_path(anchor: "newsletter"), class: "btn btn--nav" %></li>
+      </ul>
+      <button class="mobile-menu-toggle" aria-label="Menu">
+        <span></span>
+        <span></span>
+        <span></span>
+      </button>
+    </nav>
+  </div>
+</header>
+
+<main class="berthier-cravate-show">
+  <!-- Fil d'Ariane -->
+  <section class="breadcrumb">
+    <div class="container">
+      <%= link_to "← Retour au catalogue", cravates_path, class: "breadcrumb__link" %>
+    </div>
+  </section>
+
+  <!-- Fiche produit -->
+  <section class="product-detail">
+    <div class="container">
+      <div class="product-detail__grid">
+        <!-- Galerie d'images -->
+        <div class="product-detail__gallery">
+          <div class="product-detail__main-image">
+            <% if @cravate.photos.attached? %>
+              <%= image_tag @cravate.photos.first, alt: @cravate.name, class: "main-image" %>
+            <% else %>
+              <div class="product-img-placeholder product-img-placeholder--large">
+                <span class="placeholder-icon">👔</span>
+                <span class="placeholder-ref"><%= @cravate.reference %></span>
+              </div>
+            <% end %>
+          </div>
+          <% if @cravate.photos.attached? && @cravate.photos.count > 1 %>
+            <div class="product-detail__thumbnails">
+              <% @cravate.photos.each_with_index do |photo, index| %>
+                <%= image_tag photo, alt: "#{@cravate.name} - vue #{index + 1}", class: "thumbnail", data: { index: index } %>
+              <% end %>
+            </div>
+          <% end %>
+        </div>
+
+        <!-- Informations produit -->
+        <div class="product-detail__info">
+          <div class="product-detail__header">
+            <span class="product-detail__ref"><%= @cravate.reference %></span>
+            <h1 class="product-detail__name"><%= @cravate.name %></h1>
+            <p class="product-detail__color"><%= @cravate.color %></p>
+          </div>
+
+          <div class="product-detail__price-block">
+            <span class="product-detail__price"><%= number_to_currency(@cravate.price, unit: "€", format: "%n %u") %></span>
+            <% if @cravate.available? %>
+              <span class="product-detail__stock product-detail__stock--available">
+                ✓ En stock (<%= @cravate.stock %> disponibles)
+              </span>
+            <% else %>
+              <span class="product-detail__stock product-detail__stock--out">
+                ✗ Rupture de stock
+              </span>
+            <% end %>
+          </div>
+
+          <div class="product-detail__description">
+            <p><%= @cravate.description %></p>
+          </div>
+
+          <div class="product-detail__specs">
+            <h3 class="specs__title">Fiche technique</h3>
+            <ul class="specs__list">
+              <li><strong>Matière :</strong> <%= @cravate.material %></li>
+              <li><strong>Couleur :</strong> <%= @cravate.color %></li>
+              <li><strong>Fabrication :</strong> France (ateliers ESS)</li>
+              <li><strong>Entretien :</strong> Lavage à 30°C, repassage doux</li>
+            </ul>
+          </div>
+
+          <div class="product-detail__actions">
+            <% if @cravate.available? %>
+              <%= link_to "Commander cette cravate", "#", class: "btn btn--large btn--full" %>
+              <p class="product-detail__reassurance">
+                🚚 Livraison offerte en France · 🔄 Retours sous 14 jours
+              </p>
+            <% else %>
+              <div class="product-detail__notify">
+                <p>Cette cravate est temporairement indisponible.</p>
+                <%= link_to "Me prévenir du retour en stock", root_path(anchor: "newsletter"), class: "btn btn--outline btn--full" %>
+              </div>
+            <% end %>
+          </div>
+
+          <!-- Engagement Berthier -->
+          <div class="product-detail__engagement">
+            <div class="engagement__item">
+              <span class="engagement__icon">🌱</span>
+              <span class="engagement__text">Lin bio cultivé en France</span>
+            </div>
+            <div class="engagement__item">
+              <span class="engagement__icon">💜</span>
+              <span class="engagement__text">10% reversés à des causes féministes</span>
+            </div>
+            <div class="engagement__item">
+              <span class="engagement__icon">🤝</span>
+              <span class="engagement__text">Confectionnée en atelier solidaire</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Citation Berthier -->
+  <section class="product-quote">
+    <div class="container">
+      <blockquote class="product-quote__text">
+        "Une cravate ne change pas le monde. Mais elle peut rappeler à celui qui la porte qu'il n'est pas obligé de faire semblant."
+      </blockquote>
+      <p class="product-quote__signature">— Berthier, Service Comptabilité, 1994-2016</p>
+    </div>
+  </section>
+
+  <!-- Autres cravates -->
+  <section class="other-products">
+    <div class="container">
+      <h2 class="section-title">Les autres modèles</h2>
+      <div class="other-products__grid">
+        <% Cravate.where.not(id: @cravate.id).limit(2).each do |other| %>
+          <%= link_to cravate_path(other), class: "other-product-card" do %>
+            <div class="other-product-card__img">
+              <% if other.photos.attached? %>
+                <%= image_tag other.photos.first, alt: other.name %>
+              <% else %>
+                <div class="other-product-img-placeholder">
+                  <span>👔</span>
+                </div>
+              <% end %>
+            </div>
+            <div class="other-product-card__info">
+              <h3><%= other.name %></h3>
+              <span class="other-product-card__price"><%= number_to_currency(other.price, unit: "€", format: "%n %u") %></span>
+            </div>
+          <% end %>
+        <% end %>
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer class="footer">
+    <div class="container">
+      <div class="footer__content">
+        <div class="footer__brand">
+          <strong>LA CRAVATE DE BERTHIER</strong>
+          <p class="footer__tagline">L'élégance de la déconstruction</p>
+        </div>
+        <nav class="footer__nav">
+          <%= link_to "CGV", "#", class: "footer__link" %>
+          <%= link_to "Mentions légales", "#", class: "footer__link" %>
+          <%= link_to "Contact", "#", class: "footer__link" %>
+        </nav>
+        <p class="footer__legal">
+          © <%= Date.current.year %> LA CRAVATE DE BERTHIER | E.U.R.L. au capital de 100 chemises
+        </p>
+      </div>
+    </div>
+  </footer>
+</main>
+
+<script>
+// Menu mobile toggle
+document.querySelector('.mobile-menu-toggle')?.addEventListener('click', function() {
+  document.querySelector('.main-nav__links').classList.toggle('active');
+  this.classList.toggle('active');
+});
+
+// Galerie d'images - changement de l'image principale au clic sur les thumbnails
+document.querySelectorAll('.thumbnail').forEach(thumb => {
+  thumb.addEventListener('click', function() {
+    const mainImage = document.querySelector('.main-image');
+    if (mainImage) {
+      mainImage.src = this.src;
+    }
+    document.querySelectorAll('.thumbnail').forEach(t => t.classList.remove('active'));
+    this.classList.add('active');
+  });
+});
+</script>

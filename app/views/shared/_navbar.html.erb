@@ -1,0 +1,23 @@
+<header class="main-header">
+  <div class="container">
+    <nav class="main-nav">
+      <div class="brand">
+        <%= link_to root_path, class: "brand__link" do %>
+          <span class="brand__name">LA CRAVATE DE BERTHIER</span>
+          <span class="brand__tagline">L'élégance administrative depuis 1994</span>
+        <% end %>
+      </div>
+      <ul class="main-nav__links">
+        <li><%= link_to "👔 Nos valeurs", root_path(anchor: "valeurs") %></li>
+        <li><%= link_to "📁 Catalogue", cravates_path %></li>
+        <li><%= link_to "📝 Le manifeste", root_path(anchor: "manifeste") %></li>
+        <li><%= link_to "🛒 Panier (#{cart_count})", cart_path %></li>
+      </ul>
+      <button class="mobile-menu-toggle" aria-label="Menu">
+        <span></span>
+        <span></span>
+        <span></span>
+      </button>
+    </nav>
+  </div>
+</header>

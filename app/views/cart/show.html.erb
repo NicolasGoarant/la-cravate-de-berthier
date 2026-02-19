@@ -1,0 +1,130 @@
+<% content_for :page_class, "berthier-page berthier-cart" %>
+
+<%= render "shared/navbar" %>
+
+<header class="page__header">
+  <div class="container">
+    <h1 class="page__title">VOTRE PANIER</h1>
+    <p class="page__subtitle">
+      <% if @cart_items.any? %>
+        <%= pluralize(@cart_items.sum { |i| i[:quantity] }, "article") %> dans votre panier
+      <% else %>
+        Votre panier est vide
+      <% end %>
+    </p>
+  </div>
+</header>
+
+<section class="cart__content">
+  <div class="container">
+    <% if @cart_items.any? %>
+      <div class="cart__grid">
+
+        <!-- Liste des articles -->
+        <div class="cart__items">
+          <% @cart_items.each do |item| %>
+            <article class="cart-item">
+              <div class="cart-item__image">
+                <% if item[:cravate].photos.attached? %>
+                  <%= image_tag item[:cravate].photos.first, alt: item[:cravate].name %>
+                <% else %>
+                  <div class="cart-item__placeholder">👔</div>
+                <% end %>
+              </div>
+
+              <div class="cart-item__details">
+                <div class="cart-item__info">
+                  <span class="cart-item__ref"><%= item[:cravate].reference %></span>
+                  <h3 class="cart-item__name"><%= item[:cravate].name %></h3>
+                  <span class="cart-item__color"><%= item[:cravate].color %></span>
+                </div>
+
+                <div class="cart-item__price">
+                  <%= number_to_currency(item[:cravate].price, unit: "€", format: "%n %u") %>
+                </div>
+              </div>
+
+              <div class="cart-item__actions">
+                <%= form_with url: cart_update_path(item[:cravate]), method: :patch, local: true, class: "cart-item__quantity-form" do %>
+                  <label class="sr-only">Quantité</label>
+                  <select name="quantity" onchange="this.form.submit()" class="cart-item__quantity">
+                    <% (1..5).each do |n| %>
+                      <option value="<%= n %>" <%= 'selected' if item[:quantity] == n %>><%= n %></option>
+                    <% end %>
+                  </select>
+                <% end %>
+
+                <%= button_to "Supprimer", cart_remove_path(item[:cravate]), method: :delete, class: "cart-item__remove" %>
+              </div>
+
+              <div class="cart-item__subtotal">
+                <%= number_to_currency(item[:subtotal], unit: "€", format: "%n %u") %>
+              </div>
+            </article>
+          <% end %>
+
+          <div class="cart__actions">
+            <%= link_to "← Continuer mes achats", cravates_path, class: "cart__continue" %>
+            <%= button_to "Vider le panier", cart_clear_path, method: :delete, class: "cart__clear" %>
+          </div>
+        </div>
+
+        <!-- Récapitulatif -->
+        <aside class="cart__summary">
+          <h2 class="cart__summary-title">Récapitulatif</h2>
+
+          <div class="cart__summary-row">
+            <span>Sous-total</span>
+            <span><%= number_to_currency(@cart_total, unit: "€", format: "%n %u") %></span>
+          </div>
+
+          <div class="cart__summary-row">
+            <span>Livraison</span>
+            <span>
+              <% if @shipping_cost == 0 %>
+                <span class="cart__free-shipping">Offerte ✓</span>
+              <% else %>
+                <%= number_to_currency(@shipping_cost, unit: "€", format: "%n %u") %>
+              <% end %>
+            </span>
+          </div>
+
+          <% if @shipping_cost > 0 %>
+            <p class="cart__shipping-note">
+              Ajoutez une cravate pour la livraison offerte !
+            </p>
+          <% end %>
+
+          <div class="cart__summary-total">
+            <span>Total</span>
+            <span><%= number_to_currency(@cart_total + @shipping_cost, unit: "€", format: "%n %u") %></span>
+          </div>
+
+          <%= link_to "Passer commande →", checkout_path, class: "btn btn--large btn--full" %>
+
+          <div class="cart__reassurance">
+            <p>🔒 Paiement sécurisé</p>
+            <p>↩️ Retours gratuits 30 jours</p>
+            <p>🇫🇷 Fabriqué en France</p>
+          </div>
+        </aside>
+
+      </div>
+    <% else %>
+      <!-- Panier vide -->
+      <div class="cart__empty">
+        <div class="cart__empty-icon">🛒</div>
+        <h2>Votre panier est vide</h2>
+        <p>Il est temps de craquer pour une cravate qui a du sens.</p>
+        <%= link_to "Voir la collection", cravates_path, class: "btn btn--large" %>
+      </div>
+    <% end %>
+  </div>
+</section>
+
+<script>
+document.querySelector('.mobile-menu-toggle')?.addEventListener('click', function() {
+  document.querySelector('.main-nav__links').classList.toggle('active');
+  this.classList.toggle('active');
+});
+</script>

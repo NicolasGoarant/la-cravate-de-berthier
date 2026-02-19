@@ -1,0 +1,16 @@
+<%# app/views/shared/_add_to_cart_button.html.erb %>
+<%# Usage: <%= render 'shared/add_to_cart_button', cravate: @cravate %> %>
+
+<% if cravate.available? %>
+  <%= button_to cart_add_path(cravate), method: :post, class: "btn btn--large btn--full" do %>
+    🛒 Ajouter au panier — <%= number_to_currency(cravate.price, unit: "€", format: "%n %u") %>
+  <% end %>
+<% else %>
+  <div class="product-detail__notify">
+    <p>Cette cravate est actuellement indisponible.</p>
+    <%= form_with url: "#", method: :post, local: true, class: "notify-form" do |form| %>
+      <%= form.email_field :email, placeholder: "votre@email.fr", required: true, class: "form__input" %>
+      <%= form.submit "Me prévenir", class: "btn btn--outline" %>
+    <% end %>
+  </div>
+<% end %>

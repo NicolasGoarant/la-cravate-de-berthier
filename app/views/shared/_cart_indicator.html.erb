@@ -1,0 +1,10 @@
+<%# app/views/shared/_cart_indicator.html.erb %>
+<%# Usage dans la navbar: <%= render 'shared/cart_indicator' %> %>
+
+<%= link_to cart_path, class: "cart-indicator #{'cart-indicator--has-items' if cart_has_items?}" do %>
+  <span class="cart-indicator__icon">🛒</span>
+  <% if cart_has_items? %>
+    <span class="cart-indicator__count"><%= cart_count %></span>
+  <% end %>
+  <span class="cart-indicator__label">Panier</span>
+<% end %>

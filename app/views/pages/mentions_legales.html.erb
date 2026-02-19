@@ -1,0 +1,100 @@
+<% content_for :page_class, "berthier-page berthier-legal" %>
+
+<!-- Header / Navigation -->
+<%= render "shared/navbar" %>
+
+<!-- Header de la page -->
+<header class="page__header page__header--legal">
+  <div class="container">
+    <h1 class="page__title">MENTIONS LÉGALES</h1>
+    <p class="page__subtitle">Conformément à la loi n°2004-575 du 21 juin 2004 pour la confiance dans l'économie numérique.</p>
+  </div>
+</header>
+
+<!-- Contenu -->
+<section class="legal__content">
+  <div class="container">
+    <div class="legal__wrapper">
+
+      <article class="legal__section">
+        <h2>Éditeur du site</h2>
+        <p><strong>La Cravate de Berthier</strong></p>
+        <p>Micro-entreprise / [Forme juridique à préciser]</p>
+        <p>SIRET : [À compléter]</p>
+        <p>RCS : [À compléter]</p>
+        <p>Siège social : [Adresse à compléter], 54000 Nancy, France</p>
+        <p>Capital social : [À compléter]</p>
+        <p>Numéro de TVA intracommunautaire : [À compléter]</p>
+        <p>Email : bonjour@lacravatedeberthier.fr</p>
+        <p>Directeur de la publication : [Nom à compléter]</p>
+      </article>
+
+      <article class="legal__section">
+        <h2>Hébergeur</h2>
+        <p><strong>Heroku / Scalingo / [À préciser]</strong></p>
+        <p>[Adresse de l'hébergeur]</p>
+        <p>[Téléphone de l'hébergeur]</p>
+      </article>
+
+      <article class="legal__section">
+        <h2>Propriété intellectuelle</h2>
+        <p>L'ensemble du contenu de ce site (textes, images, vidéos, graphismes, logo, icônes, sons, logiciels, etc.) est la propriété exclusive de La Cravate de Berthier ou de ses partenaires et est protégé par les lois françaises et internationales relatives à la propriété intellectuelle.</p>
+        <p>Toute reproduction, représentation, modification, publication, adaptation de tout ou partie des éléments du site, quel que soit le moyen ou le procédé utilisé, est interdite, sauf autorisation écrite préalable de La Cravate de Berthier.</p>
+        <p>Toute exploitation non autorisée du site ou de l'un quelconque des éléments qu'il contient sera considérée comme constitutive d'une contrefaçon et poursuivie conformément aux dispositions des articles L.335-2 et suivants du Code de la Propriété Intellectuelle.</p>
+      </article>
+
+      <article class="legal__section">
+        <h2>Crédits</h2>
+        <p><strong>Conception et développement :</strong> [À compléter]</p>
+        <p><strong>Photographies :</strong> [À compléter] / Images générées par IA</p>
+        <p><strong>Icônes :</strong> Emojis standard Unicode</p>
+      </article>
+
+      <article class="legal__section">
+        <h2>Données personnelles</h2>
+        <p>Conformément à la loi n°78-17 du 6 janvier 1978 modifiée (loi "Informatique et Libertés") et au Règlement Général sur la Protection des Données (RGPD), vous disposez d'un droit d'accès, de rectification, de suppression et d'opposition aux données personnelles vous concernant.</p>
+        <p>Pour exercer ces droits ou pour toute question relative au traitement de vos données, vous pouvez nous contacter :</p>
+        <ul>
+          <li>Par email : bonjour@lacravatedeberthier.fr</li>
+          <li>Par courrier : La Cravate de Berthier, [Adresse], 54000 Nancy</li>
+        </ul>
+        <p>Pour plus d'informations, consultez notre Politique de confidentialité.</p>
+      </article>
+
+      <article class="legal__section">
+        <h2>Cookies</h2>
+        <p>Ce site utilise des cookies pour améliorer l'expérience utilisateur et mesurer l'audience. En naviguant sur ce site, vous acceptez l'utilisation de cookies conformément à notre Politique de confidentialité.</p>
+        <p>Vous pouvez paramétrer votre navigateur pour refuser les cookies. Toutefois, cela pourrait affecter le fonctionnement de certaines fonctionnalités du site.</p>
+      </article>
+
+      <article class="legal__section">
+        <h2>Limitation de responsabilité</h2>
+        <p>La Cravate de Berthier s'efforce d'assurer au mieux l'exactitude et la mise à jour des informations diffusées sur ce site. Toutefois, elle ne peut garantir l'exactitude, la précision ou l'exhaustivité des informations mises à disposition.</p>
+        <p>En conséquence, La Cravate de Berthier décline toute responsabilité :</p>
+        <ul>
+          <li>Pour toute imprécision, inexactitude ou omission portant sur des informations disponibles sur le site</li>
+          <li>Pour tous dommages résultant d'une intrusion frauduleuse d'un tiers</li>
+          <li>Et plus généralement, pour tous dommages, directs ou indirects, quelles qu'en soient les causes, origines, natures ou conséquences</li>
+        </ul>
+      </article>
+
+      <article class="legal__section">
+        <h2>Liens hypertextes</h2>
+        <p>Ce site peut contenir des liens vers d'autres sites internet. La Cravate de Berthier ne dispose d'aucun moyen de contrôle du contenu de ces sites tiers et n'assume aucune responsabilité quant à leur contenu.</p>
+      </article>
+
+      <article class="legal__section">
+        <h2>Droit applicable</h2>
+        <p>Les présentes mentions légales sont régies par le droit français. En cas de litige, les tribunaux français seront seuls compétents.</p>
+      </article>
+
+    </div>
+  </div>
+</section>
+
+<script>
+document.querySelector('.mobile-menu-toggle')?.addEventListener('click', function() {
+  document.querySelector('.main-nav__links').classList.toggle('active');
+  this.classList.toggle('active');
+});
+</script>

@@ -174,4 +174,33 @@ class PagesController < ApplicationController
   def valid_email?(email)
     email.match?(URI::MailTo::EMAIL_REGEXP)
   end
+
+  def faq
+    @page_title = "FAQ"
+  end
+
+  def contact
+    @page_title = "Contact"
+  end
+
+  def cgv
+    @page_title = "CGV"
+  end
+
+  def mentions_legales
+    @page_title = "Mentions légales"
+  end
+
+  def privacy
+    @page_title = "Politique de confidentialité"
+  end
+
+  def shipping
+    @page_title = "Livraison & Retours"
+  end
+
+  def about
+    @page_title = "À propos"
+  end
+
 end

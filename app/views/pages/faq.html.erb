@@ -1,0 +1,188 @@
+<% content_for :page_class, "berthier-page" %>
+
+<!-- Header / Navigation -->
+<%= render "shared/navbar" %>
+
+<!-- Header de la page -->
+<header class="page__header">
+  <div class="container">
+    <h1 class="page__title">FOIRE AUX QUESTIONS</h1>
+    <p class="page__subtitle">Tout ce que vous avez toujours voulu savoir sur les cravates (mais que vous n'avez jamais osé demander à votre DRH).</p>
+  </div>
+</header>
+
+<!-- Contenu FAQ -->
+<section class="faq__content">
+  <div class="container">
+
+    <!-- Catégorie : Produit -->
+    <div class="faq__category">
+      <h2 class="faq__category-title">🧵 Le produit</h2>
+
+      <details class="faq__item">
+        <summary class="faq__question">Pourquoi le lin ?</summary>
+        <div class="faq__answer">
+          <p>Parce que le lin est la fibre la plus écologique qui existe. Cultivé en France (principalement en Normandie et dans les Hauts-de-France), il ne nécessite quasiment pas d'irrigation et aucun OGM. C'est une plante qui pousse toute seule, comme les bonnes idées en réunion : rarement, mais quand ça arrive, c'est solide.</p>
+          <p>Et oui, le lin se froisse. C'est normal. C'est même un signe de qualité. Comme les gens intéressants.</p>
+        </div>
+      </details>
+
+      <details class="faq__item">
+        <summary class="faq__question">Comment entretenir ma cravate en lin ?</summary>
+        <div class="faq__answer">
+          <p><strong>Au quotidien :</strong> Dénouez-la (ne tirez jamais sur le petit pan) et suspendez-la ou enroulez-la sans serrer.</p>
+          <p><strong>Pour les plis :</strong> Un coup de vapeur suffit. Fer à basse température si vraiment nécessaire, toujours sur l'envers avec un linge humide entre le fer et la cravate.</p>
+          <p><strong>En cas de tache :</strong> Tamponnez délicatement avec un chiffon humide. Pour les taches tenaces, pressing recommandé (ils ont l'habitude, vous n'êtes pas le premier à renverser du café en réunion).</p>
+          <p><strong>Ne jamais :</strong> Laver en machine, tordre, exposer au soleil direct prolongé.</p>
+        </div>
+      </details>
+
+      <details class="faq__item">
+        <summary class="faq__question">Quelles sont les dimensions ?</summary>
+        <div class="faq__answer">
+          <p><strong>Largeur :</strong> 7,5 cm (coupe moderne, ni trop slim ni trop large)</p>
+          <p><strong>Longueur :</strong> 145 cm (convient à la plupart des morphologies)</p>
+          <p><strong>Doublure :</strong> 100% coton bio</p>
+          <p>La pointe doit arriver au niveau de la ceinture, jamais au-dessus, jamais en dessous. C'est la règle. Berthier n'a jamais dérogé.</p>
+        </div>
+      </details>
+
+      <details class="faq__item">
+        <summary class="faq__question">D'où vient le lin exactement ?</summary>
+        <div class="faq__answer">
+          <p>Notre lin est cultivé entre la Normandie et les Hauts-de-France, dans une zone qui produit 80% du lin mondial (oui, la France est leader mondial du lin, c'est l'un des rares domaines où on peut encore se vanter).</p>
+          <p>Filature et tissage sont également réalisés en France. La confection est assurée par des ateliers de l'Économie Sociale et Solidaire dans le Grand Est.</p>
+        </div>
+      </details>
+    </div>
+
+    <!-- Catégorie : Commande -->
+    <div class="faq__category">
+      <h2 class="faq__category-title">📦 Commande & Livraison</h2>
+
+      <details class="faq__item">
+        <summary class="faq__question">Quels sont les délais de livraison ?</summary>
+        <div class="faq__answer">
+          <p><strong>France métropolitaine :</strong> 3-5 jours ouvrés</p>
+          <p><strong>Europe :</strong> 5-8 jours ouvrés</p>
+          <p><strong>Reste du monde :</strong> 10-15 jours ouvrés</p>
+          <p>Chaque cravate est préparée avec soin (on vérifie deux fois, comme Berthier vérifiait ses notes de frais). Vous recevez un email avec le numéro de suivi dès l'expédition.</p>
+        </div>
+      </details>
+
+      <details class="faq__item">
+        <summary class="faq__question">Combien coûte la livraison ?</summary>
+        <div class="faq__answer">
+          <p><strong>France métropolitaine :</strong> 4,90€ (gratuite dès 2 cravates)</p>
+          <p><strong>Europe :</strong> 9,90€</p>
+          <p><strong>Reste du monde :</strong> 14,90€</p>
+        </div>
+      </details>
+
+      <details class="faq__item">
+        <summary class="faq__question">Puis-je retourner ma cravate ?</summary>
+        <div class="faq__answer">
+          <p>Oui, vous disposez de <strong>30 jours</strong> pour changer d'avis. La cravate doit être dans son état d'origine, non portée (sauf pour essayage), avec son étiquette.</p>
+          <p>Les retours sont <strong>gratuits en France</strong>. On vous envoie une étiquette prépayée, vous n'avez qu'à déposer le colis en point relais.</p>
+          <p>Remboursement sous 5-7 jours après réception.</p>
+        </div>
+      </details>
+
+      <details class="faq__item">
+        <summary class="faq__question">Puis-je échanger pour une autre couleur ?</summary>
+        <div class="faq__answer">
+          <p>Bien sûr. Contactez-nous par email avec votre numéro de commande et la référence souhaitée. On s'occupe du reste.</p>
+          <p>Si la nouvelle cravate est plus chère, on vous envoie un lien de paiement pour la différence. Si elle est moins chère, on vous rembourse.</p>
+        </div>
+      </details>
+    </div>
+
+    <!-- Catégorie : Engagements -->
+    <div class="faq__category">
+      <h2 class="faq__category-title">✊ Nos engagements</h2>
+
+      <details class="faq__item">
+        <summary class="faq__question">Où vont les 10% reversés ?</summary>
+        <div class="faq__answer">
+          <p>10% du prix de chaque cravate sont reversés à des associations qui œuvrent pour l'égalité professionnelle femmes-hommes.</p>
+          <p>Nos partenaires actuels :</p>
+          <ul>
+            <li><strong>Force Femmes</strong> — accompagnement des femmes de plus de 45 ans vers l'emploi</li>
+            <li><strong>Les Premières</strong> — incubateur pour entrepreneuses</li>
+          </ul>
+          <p>Chaque année, nous publions un bilan transparent des sommes reversées.</p>
+        </div>
+      </details>
+
+      <details class="faq__item">
+        <summary class="faq__question">C'est quoi exactement, l'ESS ?</summary>
+        <div class="faq__answer">
+          <p>L'Économie Sociale et Solidaire regroupe des entreprises qui placent l'humain au centre : coopératives, associations, mutuelles, entreprises d'insertion...</p>
+          <p>Nos cravates sont confectionnées par des <strong>ateliers d'insertion</strong> qui emploient et forment des personnes éloignées de l'emploi. C'est du vrai travail, payé au juste prix, qui permet à des gens de retrouver une place dans le monde professionnel.</p>
+          <p>Ce n'est pas de la charité. C'est du travail bien fait par des gens qui méritent leur chance.</p>
+        </div>
+      </details>
+
+      <details class="faq__item">
+        <summary class="faq__question">Pourquoi "féministe" pour une cravate (historiquement masculine) ?</summary>
+        <div class="faq__answer">
+          <p>Justement. La cravate a longtemps été le symbole du pouvoir masculin en entreprise. Plutôt que de l'ignorer, on préfère la détourner.</p>
+          <p>Porter une Berthier, c'est porter un rappel : le monde du travail reste inégalitaire, et on peut faire quelque chose. Ne serait-ce que reverser 10% à celles qui se battent pour changer ça.</p>
+          <p>Et puis, les femmes aussi peuvent porter des cravates. Berthier ne fait pas de discrimination.</p>
+        </div>
+      </details>
+    </div>
+
+    <!-- Catégorie : Autre -->
+    <div class="faq__category">
+      <h2 class="faq__category-title">🤔 Autres questions</h2>
+
+      <details class="faq__item">
+        <summary class="faq__question">Qui est Berthier ?</summary>
+        <div class="faq__answer">
+          <p>Berthier a travaillé 22 ans au service comptabilité. Il est arrivé en 1994 avec une cravate polyester. Il est parti en 2016 avec une conviction : puisqu'on doit porter cette chose autour du cou, autant qu'elle ait du sens.</p>
+          <p>Berthier, c'est ce collègue qu'on a tous eu. Celui qui connaît tout le monde, qui a vu passer tous les managers, toutes les réorganisations, tous les pots de départ. Celui qui porte une cravate tous les jours, pas par conviction, mais par habitude. Et qui, un jour, a décidé que cette habitude pouvait devenir autre chose.</p>
+        </div>
+      </details>
+
+      <details class="faq__item">
+        <summary class="faq__question">Puis-je visiter l'atelier de confection ?</summary>
+        <div class="faq__answer">
+          <p>Oui, sur rendez-vous. Les ateliers ESS avec lesquels nous travaillons accueillent régulièrement des visiteurs. C'est l'occasion de voir le travail réalisé et de rencontrer les personnes qui confectionnent vos cravates.</p>
+          <p>Contactez-nous par email pour organiser une visite.</p>
+        </div>
+      </details>
+
+      <details class="faq__item">
+        <summary class="faq__question">Faites-vous des cravates sur mesure ?</summary>
+        <div class="faq__answer">
+          <p>Pas pour l'instant. Notre collection de 17 références couvre les besoins de 99% des situations professionnelles (réunions inutiles, pots de départ, entretiens annuels, séminaires à la montagne...).</p>
+          <p>Si vous avez un projet spécifique (cravates corporate, événement, etc.), contactez-nous. On peut en discuter.</p>
+        </div>
+      </details>
+
+      <details class="faq__item">
+        <summary class="faq__question">J'ai une autre question</summary>
+        <div class="faq__answer">
+          <p>Écrivez-nous : <a href="mailto:bonjour@lacravatedeberthier.fr">bonjour@lacravatedeberthier.fr</a></p>
+          <p>On répond sous 24-48h (jours ouvrés). Comme Berthier répondait aux mails : vite et bien.</p>
+        </div>
+      </details>
+    </div>
+
+  </div>
+</section>
+
+<!-- CTA -->
+<section class="page__cta">
+  <div class="container">
+    <%= link_to "Voir les cravates", cravates_path, class: "btn btn--large" %>
+  </div>
+</section>
+
+<script>
+document.querySelector('.mobile-menu-toggle')?.addEventListener('click', function() {
+  document.querySelector('.main-nav__links').classList.toggle('active');
+  this.classList.toggle('active');
+});
+</script>

@@ -108,34 +108,20 @@ img {
   outline-offset: 2px;
 }
 
+.btn--large {
+  padding: 18px 35px;
+  font-size: 0.95rem;
+}
+
+.btn--full {
+  width: 100%;
+  text-align: center;
+}
+
 
 /* ===========================================
    VALUE CARDS - Section Engagements Home
    =========================================== */
-
-.values-hero {
-  padding: 4rem 0;
-  background: #faf9f6;
-}
-
-.values-hero__intro {
-  text-align: center;
-  margin-bottom: 3rem;
-}
-
-.values-hero__title {
-  font-family: 'Courier New', Courier, monospace;
-  font-size: 2rem;
-  font-weight: 700;
-  line-height: 1.2;
-  margin-bottom: 1rem;
-}
-
-.values-hero__subtitle {
-  font-family: 'Courier New', Courier, monospace;
-  font-size: 1rem;
-  color: #666;
-}
 
 /* Grid des 3 cards */
 .values-grid {
@@ -494,6 +480,339 @@ a.value-card:hover .value-card__link {
 
 
 /* ===========================================
+   PAGES STATIQUES - FAQ, CGV, Contact, etc.
+   =========================================== */
+
+.berthier-page {
+  background: #faf9f6;
+}
+
+.page__header {
+  padding: 4rem 0 3rem;
+  background: #2c2c2c;
+  text-align: center;
+  color: #fff;
+}
+
+.page__header--legal {
+  background: #3d3d3d;
+}
+
+.page__title {
+  font-family: 'Courier New', Courier, monospace;
+  font-size: 2.5rem;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  margin: 0 0 1rem 0;
+}
+
+.page__subtitle {
+  font-family: 'Courier New', Courier, monospace;
+  font-size: 1rem;
+  color: #ccc;
+  max-width: 600px;
+  margin: 0 auto;
+}
+
+/* ===========================================
+   FAQ
+   =========================================== */
+
+.faq__content {
+  padding: 4rem 0;
+}
+
+.faq__category {
+  margin-bottom: 3rem;
+}
+
+.faq__category-title {
+  font-family: 'Courier New', Courier, monospace;
+  font-size: 1.3rem;
+  font-weight: 700;
+  color: #2c2c2c;
+  margin-bottom: 1.5rem;
+  padding-bottom: 0.75rem;
+  border-bottom: 2px solid #2c2c2c;
+}
+
+.faq__item {
+  background: #fff;
+  border: 1px solid #e5e4e0;
+  margin-bottom: 0.5rem;
+}
+
+.faq__question {
+  font-family: 'Courier New', Courier, monospace;
+  font-size: 1rem;
+  font-weight: 600;
+  color: #2c2c2c;
+  padding: 1.25rem 1.5rem;
+  cursor: pointer;
+  list-style: none;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.faq__question::-webkit-details-marker {
+  display: none;
+}
+
+.faq__question::after {
+  content: '+';
+  font-size: 1.5rem;
+  font-weight: 300;
+  color: #999;
+  transition: transform 0.2s ease;
+}
+
+details[open] .faq__question::after {
+  content: '−';
+}
+
+.faq__answer {
+  padding: 0 1.5rem 1.5rem;
+  font-family: 'Courier New', Courier, monospace;
+  font-size: 0.95rem;
+  line-height: 1.8;
+  color: #444;
+}
+
+.faq__answer p {
+  margin-bottom: 1rem;
+}
+
+.faq__answer p:last-child {
+  margin-bottom: 0;
+}
+
+.faq__answer ul {
+  margin: 1rem 0;
+  padding-left: 1.5rem;
+}
+
+.faq__answer li {
+  margin-bottom: 0.5rem;
+}
+
+.faq__answer a {
+  color: #3e5f8a;
+}
+
+/* ===========================================
+   PAGES LÉGALES (CGV, Mentions)
+   =========================================== */
+
+.legal__content {
+  padding: 4rem 0;
+}
+
+.legal__wrapper {
+  max-width: 800px;
+  margin: 0 auto;
+}
+
+.legal__section {
+  margin-bottom: 2.5rem;
+}
+
+.legal__section h2 {
+  font-family: 'Courier New', Courier, monospace;
+  font-size: 1.1rem;
+  font-weight: 700;
+  color: #2c2c2c;
+  margin-bottom: 1rem;
+  padding-bottom: 0.5rem;
+  border-bottom: 1px solid #e5e4e0;
+}
+
+.legal__section p {
+  font-family: 'Courier New', Courier, monospace;
+  font-size: 0.95rem;
+  line-height: 1.8;
+  color: #444;
+  margin-bottom: 1rem;
+}
+
+.legal__section ul {
+  margin: 1rem 0;
+  padding-left: 1.5rem;
+}
+
+.legal__section li {
+  font-family: 'Courier New', Courier, monospace;
+  font-size: 0.95rem;
+  line-height: 1.8;
+  color: #444;
+  margin-bottom: 0.5rem;
+}
+
+/* ===========================================
+   PAGE CONTACT
+   =========================================== */
+
+.contact__content {
+  padding: 4rem 0;
+}
+
+.contact__grid {
+  display: grid;
+  grid-template-columns: 1fr 1.2fr;
+  gap: 4rem;
+  align-items: start;
+}
+
+.contact__info {
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+}
+
+.contact__block h2 {
+  font-family: 'Courier New', Courier, monospace;
+  font-size: 1.1rem;
+  font-weight: 700;
+  color: #2c2c2c;
+  margin-bottom: 0.75rem;
+}
+
+.contact__block p {
+  font-family: 'Courier New', Courier, monospace;
+  font-size: 0.95rem;
+  line-height: 1.7;
+  color: #444;
+  margin-bottom: 0.5rem;
+}
+
+.contact__email {
+  font-family: 'Courier New', Courier, monospace;
+  font-size: 1.1rem;
+  font-weight: 600;
+  color: #3e5f8a;
+  text-decoration: none;
+}
+
+.contact__email:hover {
+  text-decoration: underline;
+}
+
+.contact__social {
+  display: flex;
+  gap: 1rem;
+  margin-top: 0.5rem;
+}
+
+.contact__social-link {
+  font-family: 'Courier New', Courier, monospace;
+  font-size: 0.9rem;
+  color: #2c2c2c;
+  text-decoration: none;
+  padding: 0.5rem 1rem;
+  background: #f5f4f0;
+  border: 1px solid #e5e4e0;
+  transition: background 0.2s ease;
+}
+
+.contact__social-link:hover {
+  background: #e5e4e0;
+}
+
+.contact__link {
+  font-family: 'Courier New', Courier, monospace;
+  font-size: 0.9rem;
+  color: #3e5f8a;
+  text-decoration: none;
+}
+
+.contact__link:hover {
+  text-decoration: underline;
+}
+
+/* Formulaire contact */
+.contact__form-wrapper {
+  background: #fff;
+  padding: 2rem;
+  border: 1px solid #e5e4e0;
+}
+
+.contact__form-wrapper h2 {
+  font-family: 'Courier New', Courier, monospace;
+  font-size: 1.2rem;
+  font-weight: 700;
+  color: #2c2c2c;
+  margin-bottom: 1.5rem;
+}
+
+.contact__form {
+  display: flex;
+  flex-direction: column;
+  gap: 1.25rem;
+}
+
+.form__group {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.form__label {
+  font-family: 'Courier New', Courier, monospace;
+  font-size: 0.85rem;
+  font-weight: 600;
+  color: #2c2c2c;
+  text-transform: uppercase;
+  letter-spacing: 0.03em;
+}
+
+.form__input {
+  font-family: 'Courier New', Courier, monospace;
+  font-size: 1rem;
+  padding: 0.875rem 1rem;
+  border: 1px solid #e5e4e0;
+  background: #faf9f6;
+  transition: border-color 0.2s ease;
+}
+
+.form__input:focus {
+  outline: none;
+  border-color: #2c2c2c;
+}
+
+.form__input::placeholder {
+  color: #999;
+}
+
+.form__select {
+  appearance: none;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 12 12'%3E%3Cpath fill='%23666' d='M6 8L1 3h10z'/%3E%3C/svg%3E");
+  background-repeat: no-repeat;
+  background-position: right 1rem center;
+  padding-right: 2.5rem;
+}
+
+.form__textarea {
+  resize: vertical;
+  min-height: 120px;
+}
+
+.form__note {
+  font-family: 'Courier New', Courier, monospace;
+  font-size: 0.8rem;
+  color: #999;
+  text-align: center;
+  margin-top: 0.5rem;
+}
+
+/* CTA page */
+.page__cta {
+  padding: 3rem 0 4rem;
+  text-align: center;
+  background: #faf9f6;
+}
+
+
+/* ===========================================
    RESPONSIVE - Value cards
    =========================================== */
 
@@ -521,6 +840,19 @@ a.value-card:hover .value-card__link {
     flex-direction: column;
     gap: 1.5rem;
   }
+
+  .contact__grid {
+    grid-template-columns: 1fr;
+    gap: 2rem;
+  }
+
+  .contact__form-wrapper {
+    order: -1;
+  }
+
+  .page__title {
+    font-size: 2rem;
+  }
 }
 
 @media (max-width: 576px) {
@@ -539,6 +871,25 @@ a.value-card:hover .value-card__link {
 
   .values-hero__title {
     font-size: 1.5rem;
+  }
+
+  .page__title {
+    font-size: 1.5rem;
+    letter-spacing: 0.05em;
+  }
+
+  .faq__question {
+    padding: 1rem 1.25rem;
+    font-size: 0.9rem;
+  }
+
+  .faq__answer {
+    padding: 0 1.25rem 1.25rem;
+    font-size: 0.9rem;
+  }
+
+  .contact__form-wrapper {
+    padding: 1.5rem;
   }
 }
 
@@ -618,5 +969,356 @@ a.value-card:hover .value-card__link {
 
   .engagement__quote p {
     font-size: 1.15rem;
+  }
+}
+/* ===========================================
+   PANIER - cart.css
+   À ajouter à application.css
+   =========================================== */
+
+.berthier-cart {
+  background: #faf9f6;
+}
+
+/* ===========================================
+   GRILLE PANIER
+   =========================================== */
+
+.cart__content {
+  padding: 3rem 0 5rem;
+}
+
+.cart__grid {
+  display: grid;
+  grid-template-columns: 1fr 380px;
+  gap: 3rem;
+  align-items: start;
+}
+
+/* ===========================================
+   LISTE DES ARTICLES
+   =========================================== */
+
+.cart__items {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.cart-item {
+  display: grid;
+  grid-template-columns: 100px 1fr auto auto;
+  gap: 1.5rem;
+  align-items: center;
+  background: #fff;
+  padding: 1.5rem;
+  border: 1px solid #e5e4e0;
+}
+
+.cart-item__image {
+  width: 100px;
+  height: 100px;
+  background: #f5f4f0;
+  overflow: hidden;
+}
+
+.cart-item__image img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.cart-item__placeholder {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 2rem;
+  color: #999;
+}
+
+.cart-item__details {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.cart-item__ref {
+  font-family: 'Courier New', Courier, monospace;
+  font-size: 0.7rem;
+  color: #999;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+
+.cart-item__name {
+  font-family: 'Courier New', Courier, monospace;
+  font-size: 1.1rem;
+  font-weight: 700;
+  color: #2c2c2c;
+  text-transform: uppercase;
+  margin: 0;
+}
+
+.cart-item__color {
+  font-family: 'Courier New', Courier, monospace;
+  font-size: 0.85rem;
+  color: #666;
+}
+
+.cart-item__price {
+  font-family: 'Courier New', Courier, monospace;
+  font-size: 1rem;
+  font-weight: 600;
+  color: #2c2c2c;
+}
+
+.cart-item__actions {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.75rem;
+}
+
+.cart-item__quantity {
+  font-family: 'Courier New', Courier, monospace;
+  font-size: 0.9rem;
+  padding: 0.5rem 1rem;
+  border: 1px solid #e5e4e0;
+  background: #fff;
+  cursor: pointer;
+  text-align: center;
+  width: 70px;
+}
+
+.cart-item__quantity:focus {
+  outline: none;
+  border-color: #2c2c2c;
+}
+
+.cart-item__remove {
+  font-family: 'Courier New', Courier, monospace;
+  font-size: 0.75rem;
+  color: #999;
+  background: none;
+  border: none;
+  cursor: pointer;
+  text-decoration: underline;
+  padding: 0;
+}
+
+.cart-item__remove:hover {
+  color: #8b4049;
+}
+
+.cart-item__subtotal {
+  font-family: 'Courier New', Courier, monospace;
+  font-size: 1.1rem;
+  font-weight: 700;
+  color: #2c2c2c;
+  text-align: right;
+  min-width: 80px;
+}
+
+/* Actions panier */
+.cart__actions {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-top: 1rem;
+  padding-top: 1rem;
+  border-top: 1px solid #e5e4e0;
+}
+
+.cart__continue {
+  font-family: 'Courier New', Courier, monospace;
+  font-size: 0.85rem;
+  color: #3e5f8a;
+  text-decoration: none;
+}
+
+.cart__continue:hover {
+  text-decoration: underline;
+}
+
+.cart__clear {
+  font-family: 'Courier New', Courier, monospace;
+  font-size: 0.8rem;
+  color: #999;
+  background: none;
+  border: none;
+  cursor: pointer;
+}
+
+.cart__clear:hover {
+  color: #8b4049;
+}
+
+/* ===========================================
+   RÉCAPITULATIF
+   =========================================== */
+
+.cart__summary {
+  background: #fff;
+  border: 2px solid #2c2c2c;
+  padding: 2rem;
+  position: sticky;
+  top: 100px;
+}
+
+.cart__summary-title {
+  font-family: 'Courier New', Courier, monospace;
+  font-size: 1rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  color: #2c2c2c;
+  margin: 0 0 1.5rem 0;
+  padding-bottom: 1rem;
+  border-bottom: 1px solid #e5e4e0;
+}
+
+.cart__summary-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-family: 'Courier New', Courier, monospace;
+  font-size: 0.95rem;
+  color: #444;
+  margin-bottom: 0.75rem;
+}
+
+.cart__free-shipping {
+  color: #4a7c59;
+  font-weight: 600;
+}
+
+.cart__shipping-note {
+  font-family: 'Courier New', Courier, monospace;
+  font-size: 0.8rem;
+  color: #666;
+  background: #f5f4f0;
+  padding: 0.75rem;
+  margin: 1rem 0;
+  text-align: center;
+}
+
+.cart__summary-total {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-family: 'Courier New', Courier, monospace;
+  font-size: 1.25rem;
+  font-weight: 700;
+  color: #2c2c2c;
+  margin: 1.5rem 0;
+  padding-top: 1rem;
+  border-top: 2px solid #2c2c2c;
+}
+
+.cart__summary .btn {
+  margin-bottom: 1.5rem;
+}
+
+.cart__reassurance {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.cart__reassurance p {
+  font-family: 'Courier New', Courier, monospace;
+  font-size: 0.8rem;
+  color: #666;
+  margin: 0;
+  text-align: center;
+}
+
+/* ===========================================
+   PANIER VIDE
+   =========================================== */
+
+.cart__empty {
+  text-align: center;
+  padding: 5rem 2rem;
+}
+
+.cart__empty-icon {
+  font-size: 4rem;
+  margin-bottom: 1.5rem;
+  opacity: 0.5;
+}
+
+.cart__empty h2 {
+  font-family: 'Courier New', Courier, monospace;
+  font-size: 1.5rem;
+  font-weight: 700;
+  color: #2c2c2c;
+  margin-bottom: 0.75rem;
+}
+
+.cart__empty p {
+  font-family: 'Courier New', Courier, monospace;
+  font-size: 1rem;
+  color: #666;
+  margin-bottom: 2rem;
+}
+
+/* ===========================================
+   RESPONSIVE
+   =========================================== */
+
+@media (max-width: 992px) {
+  .cart__grid {
+    grid-template-columns: 1fr;
+  }
+
+  .cart__summary {
+    position: static;
+    order: -1;
+  }
+}
+
+@media (max-width: 768px) {
+  .cart-item {
+    grid-template-columns: 80px 1fr;
+    grid-template-rows: auto auto;
+    gap: 1rem;
+  }
+
+  .cart-item__image {
+    width: 80px;
+    height: 80px;
+    grid-row: span 2;
+  }
+
+  .cart-item__details {
+    grid-column: 2;
+  }
+
+  .cart-item__actions {
+    grid-column: 2;
+    flex-direction: row;
+    justify-content: space-between;
+  }
+
+  .cart-item__subtotal {
+    display: none;
+  }
+
+  .cart-item__price {
+    font-weight: 700;
+  }
+}
+
+@media (max-width: 480px) {
+  .cart__summary {
+    padding: 1.5rem;
+  }
+
+  .cart__actions {
+    flex-direction: column;
+    gap: 1rem;
   }
 }

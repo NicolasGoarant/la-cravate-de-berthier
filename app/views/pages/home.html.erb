@@ -9,38 +9,25 @@
 <% end %>
 
 <!-- Header / Navigation -->
-<header class="main-header">
-  <div class="container">
-    <nav class="main-nav">
-      <div class="brand">
-        <%= link_to root_path, class: "brand__link" do %>
-          <span class="brand__name">LA CRAVATE DE BERTHIER</span>
-          <span class="brand__tagline">L'élégance administrative depuis 1994</span>
-        <% end %>
-      </div>
-      <ul class="main-nav__links">
-        <li><a href="#valeurs">Nos valeurs</a></li>
-        <li><%= link_to "Catalogue", cravates_path %></li>
-        <li><a href="#manifeste">Le manifeste</a></li>
-      </ul>
-      <button class="mobile-menu-toggle" aria-label="Menu">
-        <span></span>
-        <span></span>
-        <span></span>
-      </button>
-    </nav>
-  </div>
-</header>
+<%= render "shared/navbar" %>
 
 <main class="berthier-home">
   <!-- Hero Section avec sélecteur de cravates -->
   <section class="hero">
     <div class="hero__grid">
       <div class="hero__copy">
-        <h1 class="hero__title"><%= @hero[:title].html_safe %></h1>
-        <p class="hero__subtitle"><%= @hero[:subtitle] %></p>
+        <h1 class="hero__title">LA CRAVATE<br>QUI ASSUME SES<br>CONTRADICTIONS.</h1>
+        <p class="hero__subtitle">Pour ceux qui portent le costume sans y croire.</p>
+
+        <!-- Proposition de valeur -->
+        <div class="hero__values">
+          <span class="hero__value">🌱 100% lin bio français</span>
+          <span class="hero__value">🤝 Confection solidaire ESS</span>
+          <span class="hero__value">✊ 10% reversés</span>
+        </div>
+
         <div class="hero__cta">
-          <%= link_to @hero[:cta_text], cravates_path, class: "btn btn--large" %>
+          <%= link_to "Découvrir la collection", cravates_path, class: "btn btn--large" %>
         </div>
       </div>
       <div class="hero__img-container">
@@ -66,6 +53,30 @@
               </button>
             <% end %>
           </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Bandeau reassurance -->
+  <section class="reassurance-bar">
+    <div class="container">
+      <div class="reassurance__grid">
+        <div class="reassurance__item">
+          <span class="reassurance__icon">🇫🇷</span>
+          <span class="reassurance__text">Fabriqué en France</span>
+        </div>
+        <div class="reassurance__item">
+          <span class="reassurance__icon">📦</span>
+          <span class="reassurance__text">Livraison offerte dès 2 cravates</span>
+        </div>
+        <div class="reassurance__item">
+          <span class="reassurance__icon">↩️</span>
+          <span class="reassurance__text">Retours gratuits 30 jours</span>
+        </div>
+        <div class="reassurance__item">
+          <span class="reassurance__icon">💳</span>
+          <span class="reassurance__text">Paiement sécurisé</span>
         </div>
       </div>
     </div>
@@ -133,15 +144,15 @@
       <div class="values-banner">
         <div class="values-banner__stat">
           <span class="values-banner__number">10%</span>
-          <span class="values-banner__label">de nos bénéfices reversés</span>
+          <span class="values-banner__label">de chaque vente reversés</span>
         </div>
         <div class="values-banner__stat">
           <span class="values-banner__number">100%</span>
           <span class="values-banner__label">Lin bio français</span>
         </div>
         <div class="values-banner__stat">
-          <span class="values-banner__number">ESS</span>
-          <span class="values-banner__label">Ateliers solidaires</span>
+          <span class="values-banner__number">0</span>
+          <span class="values-banner__label">Intermédiaire inutile</span>
         </div>
       </div>
     </div>
@@ -175,9 +186,9 @@
               <div class="product-card__footer">
                 <span class="product-card__price"><%= number_to_currency(cravate.price, unit: "€", format: "%n%u") %></span>
                 <% if cravate.available? %>
-                  <span class="btn btn--small">Commander</span>
+                  <span class="btn btn--small">Voir</span>
                 <% else %>
-                  <span class="product-card__stock">Rupture de stock</span>
+                  <span class="product-card__stock">Bientôt disponible</span>
                 <% end %>
               </div>
             </div>
@@ -187,16 +198,89 @@
     </div>
   </section>
 
+  <!-- Témoignages / Preuves sociales -->
+  <section class="testimonials">
+    <div class="container">
+      <h2 class="section-title">CE QU'ILS DISENT DE BERTHIER</h2>
+      <p class="section-subtitle">Des vrais gens. Des vraies cravates. Des vraies réunions.</p>
+
+      <div class="testimonials__grid">
+        <article class="testimonial">
+          <div class="testimonial__stars">★★★★★</div>
+          <blockquote class="testimonial__quote">
+            « J'ai porté ma Berthier à mon entretien annuel. Mon manager a remarqué la cravate avant mes résultats. Mission accomplie. »
+          </blockquote>
+          <div class="testimonial__author">
+            <span class="testimonial__name">Marc D.</span>
+            <span class="testimonial__role">Contrôleur de gestion, Lyon</span>
+          </div>
+          <span class="testimonial__product">— La Réunion Inutile (bordeaux)</span>
+        </article>
+
+        <article class="testimonial">
+          <div class="testimonial__stars">★★★★★</div>
+          <blockquote class="testimonial__quote">
+            « Le lin se froisse ? Oui. Comme ma patience en open space. C'est cohérent. »
+          </blockquote>
+          <div class="testimonial__author">
+            <span class="testimonial__name">Sophie L.</span>
+            <span class="testimonial__role">Directrice RH, Paris</span>
+          </div>
+          <span class="testimonial__product">— Le Pot de Départ (vert sapin)</span>
+        </article>
+
+        <article class="testimonial">
+          <div class="testimonial__stars">★★★★★</div>
+          <blockquote class="testimonial__quote">
+            « Je l'ai offerte à mon père pour sa retraite. Il a pleuré. Puis il a demandé s'il pouvait la porter au pot de départ. »
+          </blockquote>
+          <div class="testimonial__author">
+            <span class="testimonial__name">Thomas B.</span>
+            <span class="testimonial__role">Développeur, Nantes</span>
+          </div>
+          <span class="testimonial__product">— La Note de Frais (bleu marine)</span>
+        </article>
+      </div>
+    </div>
+  </section>
+
   <!-- Bio Berthier -->
   <section id="manifeste" class="bio">
     <div class="container">
       <div class="bio__content">
-        <h2 class="section-title"><%= @bio[:title] %></h2>
+        <h2 class="section-title">QUI EST BERTHIER ?</h2>
         <blockquote class="bio__quote">
-          "<%= @bio[:quote] %>"
+          "J'ai passé 22 ans dans un bureau. J'ai vu des gens partir, des plantes mourir, des projets s'enliser. La seule chose qui tenait, c'était ma cravate."
         </blockquote>
-        <p class="bio__text"><%= @bio[:content] %></p>
-        <p class="bio__signature"><%= @bio[:signature] %></p>
+        <p class="bio__text">
+          Berthier, c'est ce collègue qu'on a tous eu. Celui qui arrive à 8h47, qui dit bonjour à tout le monde, qui connaît le prénom de la dame de la compta. Celui qui porte une cravate tous les jours — pas par conviction, mais par habitude. Et puis un jour, il s'est demandé : puisque je dois la porter, autant qu'elle dise quelque chose.
+        </p>
+        <p class="bio__signature">— Berthier, Service Comptabilité, 1994-2016</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Partenaires / Labels -->
+  <section class="partners">
+    <div class="container">
+      <p class="partners__title">Ils nous font confiance</p>
+      <div class="partners__grid">
+        <div class="partner__item">
+          <span class="partner__logo">🌱</span>
+          <span class="partner__name">Lin de France</span>
+        </div>
+        <div class="partner__item">
+          <span class="partner__logo">🤝</span>
+          <span class="partner__name">ESS France</span>
+        </div>
+        <div class="partner__item">
+          <span class="partner__logo">✊</span>
+          <span class="partner__name">Force Femmes</span>
+        </div>
+        <div class="partner__item">
+          <span class="partner__logo">🏭</span>
+          <span class="partner__name">Made in Grand Est</span>
+        </div>
       </div>
     </div>
   </section>
@@ -205,15 +289,16 @@
   <section id="newsletter" class="newsletter">
     <div class="container">
       <div class="newsletter__box">
-        <h2><%= @newsletter[:title] %></h2>
-        <p><%= @newsletter[:description] %></p>
-        <%= form_with url: subscribe_newsletter_path, method: :post, local: true, class: "newsletter__form" do |form| %>
+        <h2>LA NOTE DE SERVICE</h2>
+        <p>Nouveautés, coulisses, et réflexions sur la vie de bureau. Pas de spam, promis — on a déjà assez de mails comme ça.</p>
+        <%= form_with url: "#", method: :post, local: true, class: "newsletter__form" do |form| %>
           <%= form.email_field :email,
-              placeholder: @newsletter[:placeholder],
+              placeholder: "votre@email.fr",
               required: true,
               class: "newsletter__input" %>
-          <%= form.submit @newsletter[:button], class: "btn" %>
+          <%= form.submit "S'inscrire", class: "btn" %>
         <% end %>
+        <p class="newsletter__note">Désinscription en un clic. On n'est pas du genre à insister.</p>
       </div>
     </div>
   </section>
@@ -221,19 +306,47 @@
   <!-- Footer -->
   <footer class="footer">
     <div class="container">
-      <div class="footer__content">
+      <div class="footer__grid">
         <div class="footer__brand">
           <strong>LA CRAVATE DE BERTHIER</strong>
           <p class="footer__tagline">L'élégance de la déconstruction</p>
+          <div class="footer__social">
+            <a href="#" class="footer__social-link" title="Instagram">📸</a>
+            <a href="#" class="footer__social-link" title="LinkedIn">💼</a>
+          </div>
         </div>
-        <nav class="footer__nav">
-          <% @footer[:links].each do |link| %>
-            <%= link_to link[:text], link[:url], class: "footer__link" %>
-          <% end %>
-        </nav>
-        <p class="footer__legal">
-          © <%= @footer[:year] %> <%= @footer[:company] %> | <%= @footer[:legal] %>
-        </p>
+
+        <div class="footer__links">
+          <h4>Boutique</h4>
+          <ul>
+            <li><%= link_to "Catalogue", cravates_path %></li>
+            <li><a href="#valeurs">Nos engagements</a></li>
+            <li><%= link_to "FAQ", faq_path rescue "#" %></li>
+          </ul>
+        </div>
+
+        <div class="footer__links">
+          <h4>Informations</h4>
+          <ul>
+            <li><%= link_to "À propos", about_path rescue "#" %></li>
+            <li><%= link_to "Contact", contact_path rescue "#" %></li>
+            <li><%= link_to "Livraison & Retours", shipping_path rescue "#" %></li>
+          </ul>
+        </div>
+
+        <div class="footer__links">
+          <h4>Légal</h4>
+          <ul>
+            <li><%= link_to "CGV", cgv_path rescue "#" %></li>
+            <li><%= link_to "Mentions légales", mentions_legales_path rescue "#" %></li>
+            <li><%= link_to "Politique de confidentialité", privacy_path rescue "#" %></li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="footer__bottom">
+        <p>© 2026 La Cravate de Berthier — Tous droits réservés</p>
+        <p class="footer__credit">Fait avec 🤍 et un peu d'ironie à Nancy</p>
       </div>
     </div>
   </footer>
@@ -279,14 +392,12 @@ document.addEventListener('DOMContentLoaded', function() {
       const nextIndex = (currentIndex + 1) % images.length;
       switchCravate(nextIndex);
 
-      // Arrêter après 3 changements
       if (autoPlayCount >= 3) {
         stopAutoPlay();
       }
-    }, 2000); // 2 secondes entre chaque changement
+    }, 2000);
   }
 
-  // Clic sur les pastilles
   dots.forEach((dot, index) => {
     dot.addEventListener('click', () => {
       userHasInteracted = true;
@@ -295,7 +406,6 @@ document.addEventListener('DOMContentLoaded', function() {
     });
   });
 
-  // Clic sur l'image pour passer à la suivante
   showcase?.addEventListener('click', function() {
     userHasInteracted = true;
     stopAutoPlay();
@@ -303,21 +413,18 @@ document.addEventListener('DOMContentLoaded', function() {
     switchCravate(nextIndex);
   });
 
-  // Arrêter l'auto-play si l'utilisateur survole l'image
   showcase?.addEventListener('mouseenter', () => {
     if (!userHasInteracted) {
       stopAutoPlay();
     }
   });
 
-  // Reprendre l'auto-play si l'utilisateur quitte l'image (si pas encore interagi)
   showcase?.addEventListener('mouseleave', () => {
     if (!userHasInteracted && autoPlayCount < 3) {
       startAutoPlay();
     }
   });
 
-  // Démarrer l'auto-défilement après un court délai
   setTimeout(() => {
     if (!userHasInteracted) {
       startAutoPlay();

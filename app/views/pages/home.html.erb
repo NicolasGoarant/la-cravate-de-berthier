@@ -52,11 +52,6 @@
                 class: "hero__berthier-img #{index == 0 ? 'active' : ''}",
                 data: { cravate_index: index } %>
           <% end %>
-
-          <!-- Message avec guillemets -->
-          <div class="hero__click-message" id="clickMessage">
-            <span>👔 « Un clic, une cravate, un crack »</span>
-          </div>
         </div>
 
         <!-- Sélecteur de cravates - pastilles -->
@@ -76,7 +71,7 @@
     </div>
   </section>
 
-  <!-- Piliers / Valeurs - Avec images -->
+  <!-- Piliers / Valeurs - Cards entièrement cliquables -->
   <section id="valeurs" class="values-hero">
     <div class="container">
       <div class="values-hero__intro">
@@ -84,8 +79,8 @@
         <p class="values-hero__subtitle">La cravate qui assume ses convictions, même si ça froisse quelques chemises.</p>
       </div>
       <div class="values-grid">
-        <!-- Card Écologique -->
-        <article class="value-card value-card--1">
+        <!-- Card Écologique - entièrement cliquable -->
+        <%= link_to engagement_ecologique_path, class: "value-card value-card--1" do %>
           <div class="value-card__image">
             <%= image_tag "bloc_solidaire/ficus.png", alt: "Plante de bureau fanée" %>
           </div>
@@ -96,12 +91,13 @@
             <h3 class="value-card__title">ÉCOLOGIQUE</h3>
             <p class="value-card__description">100% Lin bio sourcé en France. Une matière qui respire, contrairement à votre carrière.</p>
             <div class="value-card__cta">
-              <%= link_to "En savoir plus →", engagement_ecologique_path, class: "value-card__link" %>
+              <span class="value-card__link">En savoir plus →</span>
             </div>
           </div>
-        </article>
-        <!-- Card Féministe -->
-        <article class="value-card value-card--2">
+        <% end %>
+
+        <!-- Card Féministe - entièrement cliquable -->
+        <%= link_to engagement_feministe_path, class: "value-card value-card--2" do %>
           <div class="value-card__image">
             <%= image_tag "bloc_solidaire/rouge_a_levre.png", alt: "Berthier avec rouge à lèvres" %>
           </div>
@@ -112,12 +108,13 @@
             <h3 class="value-card__title">FÉMINISTE</h3>
             <p class="value-card__description">10% des bénéfices reversés. Parce que le patriarcat de bureau est un concept dépassé, même pour Berthier.</p>
             <div class="value-card__cta">
-              <%= link_to "En savoir plus →", engagement_feministe_path, class: "value-card__link" %>
+              <span class="value-card__link">En savoir plus →</span>
             </div>
           </div>
-        </article>
-        <!-- Card Solidaire -->
-        <article class="value-card value-card--3">
+        <% end %>
+
+        <!-- Card Solidaire - entièrement cliquable -->
+        <%= link_to engagement_solidaire_path, class: "value-card value-card--3" do %>
           <div class="value-card__image">
             <%= image_tag "bloc_solidaire/pot-de-depart.png", alt: "Pot de départ Thérèse" %>
           </div>
@@ -128,10 +125,10 @@
             <h3 class="value-card__title">SOLIDAIRE</h3>
             <p class="value-card__description">Confectionnée par des entreprises de l'ESS. On soutient l'humain, le vrai, celui des ateliers.</p>
             <div class="value-card__cta">
-              <%= link_to "En savoir plus →", engagement_solidaire_path, class: "value-card__link" %>
+              <span class="value-card__link">En savoir plus →</span>
             </div>
           </div>
-        </article>
+        <% end %>
       </div>
       <div class="values-banner">
         <div class="values-banner__stat">
@@ -249,12 +246,11 @@ document.querySelector('.mobile-menu-toggle')?.addEventListener('click', functio
   this.classList.toggle('active');
 });
 
-// Sélecteur de cravates avec auto-défilement initial
+// Sélecteur de cravates avec auto-défilement initial (3 changements, 2 secondes)
 document.addEventListener('DOMContentLoaded', function() {
   const images = document.querySelectorAll('.hero__berthier-img');
   const dots = document.querySelectorAll('.selector__dot');
   const showcase = document.getElementById('berthierShowcase');
-  const clickMessage = document.getElementById('clickMessage');
   let currentIndex = 0;
   let autoPlayInterval = null;
   let autoPlayCount = 0;
@@ -277,23 +273,17 @@ document.addEventListener('DOMContentLoaded', function() {
     }
   }
 
-  function hideMessage() {
-    if (clickMessage) {
-      clickMessage.classList.add('hidden');
-    }
-  }
-
   function startAutoPlay() {
     autoPlayInterval = setInterval(() => {
       autoPlayCount++;
       const nextIndex = (currentIndex + 1) % images.length;
       switchCravate(nextIndex);
 
-      // Arrêter après 4 changements
-      if (autoPlayCount >= 4) {
+      // Arrêter après 3 changements
+      if (autoPlayCount >= 3) {
         stopAutoPlay();
       }
-    }, 1000);
+    }, 2000); // 2 secondes entre chaque changement
   }
 
   // Clic sur les pastilles
@@ -301,7 +291,6 @@ document.addEventListener('DOMContentLoaded', function() {
     dot.addEventListener('click', () => {
       userHasInteracted = true;
       stopAutoPlay();
-      hideMessage();
       switchCravate(index);
     });
   });
@@ -310,7 +299,6 @@ document.addEventListener('DOMContentLoaded', function() {
   showcase?.addEventListener('click', function() {
     userHasInteracted = true;
     stopAutoPlay();
-    hideMessage();
     const nextIndex = (currentIndex + 1) % images.length;
     switchCravate(nextIndex);
   });
@@ -324,7 +312,7 @@ document.addEventListener('DOMContentLoaded', function() {
 
   // Reprendre l'auto-play si l'utilisateur quitte l'image (si pas encore interagi)
   showcase?.addEventListener('mouseleave', () => {
-    if (!userHasInteracted && autoPlayCount < 4) {
+    if (!userHasInteracted && autoPlayCount < 3) {
       startAutoPlay();
     }
   });

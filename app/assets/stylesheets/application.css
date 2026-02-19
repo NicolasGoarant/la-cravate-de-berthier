@@ -31,8 +31,8 @@
   box-sizing: border-box;
 }
 
-html:focus-within {
-  scroll-behavior: smooth;
+html {
+  scroll-behavior: auto;
 }
 
 body {
@@ -109,10 +109,8 @@ img {
 }
 
 
-
 /* ===========================================
-   VALUE CARDS - Section Engagements
-   Avec images illustratives
+   VALUE CARDS - Section Engagements Home
    =========================================== */
 
 .values-hero {
@@ -155,6 +153,15 @@ img {
   overflow: hidden;
   display: flex;
   flex-direction: column;
+  text-decoration: none !important;
+  color: inherit;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+/* Card cliquable - hover effect */
+a.value-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.12);
 }
 
 /* Image de la card */
@@ -209,7 +216,7 @@ img {
 }
 
 .value-card__icon {
-  display: none; /* On cache les icônes SVG maintenant qu'on a des images */
+  display: none;
 }
 
 .value-card__title {
@@ -237,14 +244,13 @@ img {
   font-family: 'Courier New', Courier, monospace;
   font-size: 0.75rem;
   color: #fff;
-  text-decoration: none;
+  text-decoration: none !important;
   opacity: 0.8;
   transition: opacity 0.2s ease;
 }
 
-.value-card__link:hover {
+a.value-card:hover .value-card__link {
   opacity: 1;
-  text-decoration: underline;
 }
 
 /* Bannière de stats */
@@ -279,7 +285,216 @@ img {
 
 
 /* ===========================================
-   RESPONSIVE
+   PRODUCT CARDS - Supprimer soulignement
+   =========================================== */
+
+.product-card {
+  text-decoration: none !important;
+}
+
+.product-card:hover {
+  text-decoration: none !important;
+}
+
+.product-card * {
+  text-decoration: none !important;
+}
+
+
+/* ===========================================
+   PAGES ENGAGEMENTS
+   Écologique, Féministe, Solidaire
+   =========================================== */
+
+.berthier-engagement {
+  background: #faf9f6;
+}
+
+/* Header */
+.engagement__header {
+  padding: 4rem 0 3rem;
+  text-align: center;
+  color: #fff;
+}
+
+.engagement__header--eco {
+  background: linear-gradient(135deg, #4a6741 0%, #3d5a35 100%);
+}
+
+/* VIOLET pour féministe */
+.engagement__header--fem {
+  background: linear-gradient(135deg, #7b4b94 0%, #5c3a70 100%);
+}
+
+.engagement__header--sol {
+  background: linear-gradient(135deg, #3e5f8a 0%, #2d4a6d 100%);
+}
+
+.engagement__dossier {
+  display: inline-block;
+  font-family: 'Courier New', Courier, monospace;
+  font-size: 0.75rem;
+  letter-spacing: 0.1em;
+  opacity: 0.8;
+  margin-bottom: 1rem;
+}
+
+.engagement__title {
+  font-family: 'Courier New', Courier, monospace;
+  font-size: 3rem;
+  font-weight: 700;
+  letter-spacing: 0.15em;
+  margin: 0 0 1rem 0;
+}
+
+.engagement__subtitle {
+  font-family: 'Courier New', Courier, monospace;
+  font-size: 1.1rem;
+  font-style: italic;
+  opacity: 0.9;
+  max-width: 600px;
+  margin: 0 auto;
+}
+
+/* Contenu principal */
+.engagement__content {
+  padding: 4rem 0;
+}
+
+.engagement__grid {
+  display: grid;
+  grid-template-columns: 1.2fr 0.8fr;
+  gap: 4rem;
+  align-items: start;
+}
+
+.engagement__text {
+  font-family: 'Courier New', Courier, monospace;
+}
+
+/* TAILLES AUGMENTÉES POUR DESKTOP */
+.engagement__intro {
+  font-size: 1.35rem;
+  line-height: 1.9;
+  color: #2c2c2c;
+  margin-bottom: 1.5rem;
+}
+
+.engagement__text p {
+  font-size: 1.15rem;
+  line-height: 1.9;
+  color: #444;
+  margin-bottom: 1.5rem;
+}
+
+.engagement__conclusion {
+  font-size: 1.25rem !important;
+  font-weight: 500;
+  color: #2c2c2c !important;
+  padding-left: 1.5rem;
+  border-left: 4px solid #2c2c2c;
+  margin: 2rem 0 !important;
+}
+
+.engagement__signature {
+  font-size: 1.1rem !important;
+  font-style: italic;
+  color: #666 !important;
+  text-align: right;
+  margin-top: 2rem !important;
+}
+
+.engagement__image {
+  position: sticky;
+  top: 2rem;
+}
+
+.engagement__image img {
+  width: 100%;
+  border-radius: 4px;
+  box-shadow: 0 8px 30px rgba(0, 0, 0, 0.12);
+}
+
+/* Encart faits concrets */
+.engagement__facts {
+  padding: 3rem 0;
+  background: #2c2c2c;
+}
+
+.facts__title {
+  font-family: 'Courier New', Courier, monospace;
+  font-size: 1rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  color: #fff;
+  text-align: center;
+  margin-bottom: 2rem;
+}
+
+.facts__grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 2rem;
+}
+
+.fact__item {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  gap: 0.75rem;
+}
+
+.fact__icon {
+  font-size: 2rem;
+}
+
+.fact__text {
+  font-family: 'Courier New', Courier, monospace;
+  font-size: 0.95rem;
+  line-height: 1.5;
+  color: #ccc;
+}
+
+/* Citation de fin */
+.engagement__quote {
+  padding: 4rem 0;
+  background: #f5f4f0;
+}
+
+.engagement__quote blockquote {
+  max-width: 700px;
+  margin: 0 auto;
+  text-align: center;
+}
+
+.engagement__quote p {
+  font-family: 'Courier New', Courier, monospace;
+  font-size: 1.5rem;
+  font-style: italic;
+  line-height: 1.6;
+  color: #2c2c2c;
+  margin-bottom: 1rem;
+}
+
+.engagement__quote cite {
+  font-family: 'Courier New', Courier, monospace;
+  font-size: 0.85rem;
+  color: #666;
+  font-style: normal;
+}
+
+/* CTA */
+.engagement__cta {
+  padding: 3rem 0 4rem;
+  text-align: center;
+  background: #faf9f6;
+}
+
+
+/* ===========================================
+   RESPONSIVE - Value cards
    =========================================== */
 
 @media (max-width: 992px) {
@@ -328,214 +543,8 @@ img {
 }
 
 
-
-
 /* ===========================================
-   PAGES ENGAGEMENTS
-   Écologique, Féministe, Solidaire
-   =========================================== */
-
-.berthier-engagement {
-  background: #faf9f6;
-}
-
-/* ===========================================
-   HEADER
-   =========================================== */
-
-.engagement__header {
-  padding: 4rem 0 3rem;
-  text-align: center;
-  color: #fff;
-}
-
-.engagement__header--eco {
-  background: linear-gradient(135deg, #4a6741 0%, #3d5a35 100%);
-}
-
-.engagement__header--fem {
-  background: linear-gradient(135deg, #8b4049 0%, #6d2f36 100%);
-}
-
-.engagement__header--sol {
-  background: linear-gradient(135deg, #3e5f8a 0%, #2d4a6d 100%);
-}
-
-.engagement__dossier {
-  display: inline-block;
-  font-family: 'Courier New', Courier, monospace;
-  font-size: 0.75rem;
-  letter-spacing: 0.1em;
-  opacity: 0.8;
-  margin-bottom: 1rem;
-}
-
-.engagement__title {
-  font-family: 'Courier New', Courier, monospace;
-  font-size: 3rem;
-  font-weight: 700;
-  letter-spacing: 0.15em;
-  margin: 0 0 1rem 0;
-}
-
-.engagement__subtitle {
-  font-family: 'Courier New', Courier, monospace;
-  font-size: 1.1rem;
-  font-style: italic;
-  opacity: 0.9;
-  max-width: 600px;
-  margin: 0 auto;
-}
-
-/* ===========================================
-   CONTENU PRINCIPAL
-   =========================================== */
-
-.engagement__content {
-  padding: 4rem 0;
-}
-
-.engagement__grid {
-  display: grid;
-  grid-template-columns: 1.2fr 0.8fr;
-  gap: 4rem;
-  align-items: start;
-}
-
-.engagement__text {
-  font-family: 'Courier New', Courier, monospace;
-}
-
-.engagement__intro {
-  font-size: 1.2rem;
-  line-height: 1.8;
-  color: #2c2c2c;
-  margin-bottom: 1.5rem;
-}
-
-.engagement__text p {
-  font-size: 1.05rem;
-  line-height: 1.8;
-  color: #444;
-  margin-bottom: 1.5rem;
-}
-
-.engagement__conclusion {
-  font-size: 1.15rem !important;
-  font-weight: 500;
-  color: #2c2c2c !important;
-  padding-left: 1.5rem;
-  border-left: 4px solid #2c2c2c;
-  margin: 2rem 0 !important;
-}
-
-.engagement__signature {
-  font-size: 1rem !important;
-  font-style: italic;
-  color: #666 !important;
-  text-align: right;
-  margin-top: 2rem !important;
-}
-
-.engagement__image {
-  position: sticky;
-  top: 2rem;
-}
-
-.engagement__image img {
-  width: 100%;
-  border-radius: 4px;
-  box-shadow: 0 8px 30px rgba(0, 0, 0, 0.12);
-}
-
-/* ===========================================
-   ENCART FAITS CONCRETS
-   =========================================== */
-
-.engagement__facts {
-  padding: 3rem 0;
-  background: #2c2c2c;
-}
-
-.facts__title {
-  font-family: 'Courier New', Courier, monospace;
-  font-size: 1rem;
-  font-weight: 700;
-  text-transform: uppercase;
-  letter-spacing: 0.1em;
-  color: #fff;
-  text-align: center;
-  margin-bottom: 2rem;
-}
-
-.facts__grid {
-  display: grid;
-  grid-template-columns: repeat(4, 1fr);
-  gap: 2rem;
-}
-
-.fact__item {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  text-align: center;
-  gap: 0.75rem;
-}
-
-.fact__icon {
-  font-size: 2rem;
-}
-
-.fact__text {
-  font-family: 'Courier New', Courier, monospace;
-  font-size: 0.85rem;
-  line-height: 1.5;
-  color: #ccc;
-}
-
-/* ===========================================
-   CITATION DE FIN
-   =========================================== */
-
-.engagement__quote {
-  padding: 4rem 0;
-  background: #f5f4f0;
-}
-
-.engagement__quote blockquote {
-  max-width: 700px;
-  margin: 0 auto;
-  text-align: center;
-}
-
-.engagement__quote p {
-  font-family: 'Courier New', Courier, monospace;
-  font-size: 1.4rem;
-  font-style: italic;
-  line-height: 1.6;
-  color: #2c2c2c;
-  margin-bottom: 1rem;
-}
-
-.engagement__quote cite {
-  font-family: 'Courier New', Courier, monospace;
-  font-size: 0.85rem;
-  color: #666;
-  font-style: normal;
-}
-
-/* ===========================================
-   CTA
-   =========================================== */
-
-.engagement__cta {
-  padding: 3rem 0 4rem;
-  text-align: center;
-  background: #faf9f6;
-}
-
-/* ===========================================
-   RESPONSIVE
+   RESPONSIVE - Pages engagements
    =========================================== */
 
 @media (max-width: 992px) {
@@ -558,6 +567,25 @@ img {
   .engagement__title {
     font-size: 2.5rem;
   }
+
+  /* Tailles réduites sur tablette */
+  .engagement__intro {
+    font-size: 1.15rem;
+    line-height: 1.8;
+  }
+
+  .engagement__text p {
+    font-size: 1.05rem;
+    line-height: 1.8;
+  }
+
+  .engagement__conclusion {
+    font-size: 1.1rem !important;
+  }
+
+  .engagement__quote p {
+    font-size: 1.3rem;
+  }
 }
 
 @media (max-width: 576px) {
@@ -575,11 +603,20 @@ img {
     gap: 1.5rem;
   }
 
-  .engagement__quote p {
-    font-size: 1.2rem;
+  /* Tailles réduites sur mobile */
+  .engagement__intro {
+    font-size: 1.05rem;
   }
 
-  .engagement__intro {
-    font-size: 1.1rem;
+  .engagement__text p {
+    font-size: 1rem;
+  }
+
+  .engagement__conclusion {
+    font-size: 1.05rem !important;
+  }
+
+  .engagement__quote p {
+    font-size: 1.15rem;
   }
 }

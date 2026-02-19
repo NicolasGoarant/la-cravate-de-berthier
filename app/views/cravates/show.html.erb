@@ -1,11 +1,28 @@
 <% content_for :page_class, "berthier-cravate-show" %>
 
-<!-- Breadcrumb -->
-<nav class="breadcrumb">
+<!-- Header / Navigation -->
+<header class="main-header">
   <div class="container">
-    <%= link_to "← Retour au catalogue", cravates_path, class: "breadcrumb__link" %>
+    <nav class="main-nav">
+      <div class="brand">
+        <%= link_to root_path, class: "brand__link" do %>
+          <span class="brand__name">LA CRAVATE DE BERTHIER</span>
+          <span class="brand__tagline">L'élégance administrative depuis 1994</span>
+        <% end %>
+      </div>
+      <ul class="main-nav__links">
+        <li><%= link_to "Nos valeurs", root_path(anchor: "valeurs") %></li>
+        <li><%= link_to "Catalogue", cravates_path %></li>
+        <li><%= link_to "Le manifeste", root_path(anchor: "manifeste") %></li>
+      </ul>
+      <button class="mobile-menu-toggle" aria-label="Menu">
+        <span></span>
+        <span></span>
+        <span></span>
+      </button>
+    </nav>
   </div>
-</nav>
+</header>
 
 <!-- Fiche Produit -->
 <section class="product-detail">
@@ -171,26 +188,10 @@
   </div>
 </section>
 
-<!-- Autres cravates -->
-<section class="other-products">
-  <div class="container">
-    <h2 class="section-title">AUTRES DOSSIERS</h2>
-    <div class="other-products__grid">
-      <% @other_cravates.each do |cravate| %>
-        <%= link_to cravate_path(cravate), class: "other-product-card" do %>
-          <div class="other-product-card__img">
-            <% if cravate.photos.attached? %>
-              <%= image_tag cravate.photos.first, alt: cravate.name %>
-            <% else %>
-              <div class="other-product-img-placeholder">👔</div>
-            <% end %>
-          </div>
-          <div class="other-product-card__info">
-            <h3><%= cravate.name %></h3>
-            <span class="other-product-card__price"><%= number_to_currency(cravate.price, unit: "€", format: "%n%u") %></span>
-          </div>
-        <% end %>
-      <% end %>
-    </div>
-  </div>
-</section>
+<script>
+// Menu mobile toggle
+document.querySelector('.mobile-menu-toggle')?.addEventListener('click', function() {
+  document.querySelector('.main-nav__links').classList.toggle('active');
+  this.classList.toggle('active');
+});
+</script>
